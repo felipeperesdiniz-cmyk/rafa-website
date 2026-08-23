@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Rafa Diniz, Photographer and Filmmaker</title>
+<meta name="description" content="Rafa Diniz photographs architecture, wildlife, landscape and sport, and directs short documentary and brand films. Based between Brazil and the United States." />
+<meta name="theme-color" content="#0a0a0b" />
+<link rel="canonical" href="https://rafadiniz.com/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rafa Diniz, Photographer and Filmmaker" />
+<meta property="og:description" content="Photographs and films by Rafa Diniz. Documentary, architecture, wildlife, landscape and sport." />
+<meta property="og:image" content="assets/video/hero-poster.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0b'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial' font-size='16' font-weight='700' fill='%23f3f0ea' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="css/main.css" />
+
+<link rel="preload" as="image" href="assets/video/hero-poster.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rafa Diniz",
+  "jobTitle": "Photographer and Filmmaker",
+  "url": "https://rafadiniz.com/",
+  "sameAs": ["https://www.youtube.com/@Rafap.diniz-jornal"]
+}
+</script>
+</head>
+
+<body>
+<!-- Progressive enhancement: the page is fully readable before main.js runs.
+     `js` is set synchronously so enhanced styles never flash on no-JS. -->
+<script>document.documentElement.classList.add('js');</script>
+
+<a class="skip" href="#work">Skip to the work</a>
+
+<!-- ───────────────────────────── header ───────────────────────────── -->
+<header class="hdr" id="hdr">
+  <a class="hdr__mark" href="#top">
+    <span class="hdr__markName">Rafa&nbsp;Diniz</span>
+    <span class="hdr__markRole">Photography &amp; Film</span>
+  </a>
+
+  <nav class="hdr__nav" aria-label="Primary">
+    <a href="#films">Films</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="hdr__cta">Contact</a>
+  </nav>
+
+  <button class="hdr__burger" id="burger" aria-expanded="false" aria-controls="menu">
+    <span class="hdr__burgerLabel">Menu</span>
+    <span class="hdr__burgerIcon" aria-hidden="true"><i></i><i></i></span>
+  </button>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Mobile">
+    <a href="#films">Films</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<main id="top">
+
+  <!-- ─────────────────────────── 01 · hero ───────────────────────────
+       A tall section with a sticky stage. You land on the titles; the first
+       scroll dissolves every word away and hands the frame over to the
+       showreel, playing full-frame with nothing on top of it. The bars close
+       to 2.39:1 on the way out, which is the handoff into the films.
+       Scroll is never trapped: keep going and you simply leave. -->
+  <section class="hero" id="hero">
+    <div class="hero__stage">
+      <div class="hero__media">
+        <video
+          class="hero__video" id="heroVideo"
+          poster="assets/video/hero-poster.jpg"
+          muted playsinline loop preload="metadata"
+          aria-hidden="true" tabindex="-1"></video>
+
+        <!-- The reel itself. Kept out of the accessibility tree: the labelled
+             route to this film is the button below, which opens it with
+             sound and real controls. -->
+        <video
+          class="hero__reel" id="heroReelVideo"
+          muted playsinline preload="none"
+          aria-hidden="true" tabindex="-1"></video>
+
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__bar hero__bar--top" aria-hidden="true"></div>
+        <div class="hero__bar hero__bar--bottom" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__body">
+        <h1 class="hero__title" data-split>Rafa Diniz</h1>
+
+        <p class="hero__lede">
+          I photograph architecture, wildlife, landscape and sport, and I
+          direct short documentary and brand films. I work between Brazil
+          and the United States.
+        </p>
+      </div>
+
+      <div class="hero__foot">
+        <a class="hero__cue" href="#films">
+          <span class="hero__cueLine" aria-hidden="true"></span>
+          Scroll
+        </a>
+
+        <!-- The direct route: opens the reel with sound and controls. Also the
+             only route when motion is off, so it is never hidden. -->
+        <button class="heroReel" data-play-local="assets/video/reel.mp4"
+                data-title="Rafa Diniz Showreel">
+          <span class="heroReel__icon" aria-hidden="true"></span>
+          <span class="heroReel__text">Play the showreel <i>0:53</i></span>
+        </button>
+      </div>
+
+      <!-- Shown only while the reel has the frame. Fades itself out when the
+           pointer goes quiet, the way a player's chrome does. -->
+      <div class="hero__controls" id="heroControls" hidden>
+        <button class="heroCtl" id="reelSound" aria-pressed="false">
+          <span class="heroCtl__dot" aria-hidden="true"></span>
+          <span id="reelSoundLabel">Sound on</span>
+        </button>
+        <button class="heroCtl" id="reelSkip">Skip intro</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 02 · films ─────────────────────────── -->
+  <section class="films" id="films">
+    <header class="secHead">
+      <h2 class="secHead__title" data-split>Films</h2>
+      <p class="secHead__note">
+        Two films. I directed, shot and cut both of them.
+      </p>
+    </header>
+
+    <article class="film" id="film-paixao">
+      <div class="film__meta">
+        <p class="film__no">01</p>
+        <h3 class="film__title">Paixão&nbsp;Calejada</h3>
+        <p class="film__sub"><em>Calloused Passion</em></p>
+        <dl class="film__facts">
+          <div><dt>Format</dt><dd>Short documentary</dd></div>
+          <div><dt>Role</dt><dd>Directed, shot and edited</dd></div>
+          <div><dt>Language</dt><dd>Portuguese</dd></div>
+        </dl>
+        <!-- Rafa: replace this with your own sentence about the film. -->
+        <p class="film__copy">
+          A short documentary about devotion and what it asks of the body.
+        </p>
+        <button class="playBtn" data-play="BNN8BEkgFSk" data-title="Paixão Calejada">
+          <span class="playBtn__icon" aria-hidden="true"></span>
+          <span>Watch the film</span>
+        </button>
+      </div>
+
+      <figure class="film__figure" data-reveal>
+        <img src="assets/video/paixao-calejada-still.jpg"
+             alt="Still from Paixão Calejada: a face lit deep red beside a lit archway."
+             width="1800" height="754" loading="lazy" decoding="async" />
+      </figure>
+    </article>
+
+    <article class="film film--alt" id="film-b2b">
+      <div class="film__meta">
+        <p class="film__no">02</p>
+        <h3 class="film__title">B2B&nbsp;Ranch</h3>
+        <p class="film__sub"><em>Vídeo Institucional</em></p>
+        <dl class="film__facts">
+          <div><dt>Format</dt><dd>Brand film</dd></div>
+          <div><dt>Role</dt><dd>Directed, shot and edited</dd></div>
+          <div><dt>Language</dt><dd>Portuguese</dd></div>
+        </dl>
+        <p class="film__copy">
+          A brand film for a working ranch, built around the people who run it.
+        </p>
+        <button class="playBtn" data-play="4IPh_fbGn5g" data-title="B2B Ranch, Vídeo Institucional">
+          <span class="playBtn__icon" aria-hidden="true"></span>
+          <span>Watch the film</span>
+        </button>
+      </div>
+
+      <figure class="film__figure" data-reveal>
+        <img src="assets/video/b2b-ranch-still.jpg"
+             alt="Still from the B2B Ranch film: four ranch hands standing together in a tack room."
+             width="1800" height="754" loading="lazy" decoding="async" />
+      </figure>
+    </article>
+  </section>
+
+  <!-- ─────────────────────────── 03 · work ─────────────────────────── -->
+  <section class="work" id="work">
+    <header class="secHead">
+      <h2 class="secHead__title" data-split>Photographs</h2>
+      <p class="secHead__note">
+        Filter by subject, or keep scrolling.
+      </p>
+    </header>
+
+    <div class="filters" role="group" aria-label="Filter frames by category" id="filters"></div>
+
+    <!-- The grid below is written by tools/build-images.py so the frames exist
+         in the HTML for search engines and for visitors without JavaScript.
+         main.js replaces it on load to add the editorial layout, filtering
+         and the lightbox. Edit tools/manifest.json, not this block. -->
+    <div class="grid" id="grid">
+      <!-- grid:start -->
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.3125">
+          <img src="assets/photos/leading-line-1200.webp"
+               srcset="assets/photos/leading-line-1200.webp 1200w, assets/photos/leading-line-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Long exposure" width="1680" height="1280"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.663">
+          <img src="assets/photos/morro-dois-irmaos-1200.webp"
+               srcset="assets/photos/morro-dois-irmaos-1200.webp 1200w, assets/photos/morro-dois-irmaos-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Morro Dois Irmãos, Fernando de Noronha" width="1080" height="1629"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.663">
+          <img src="assets/photos/the-ascent-1200.webp"
+               srcset="assets/photos/the-ascent-1200.webp 1200w, assets/photos/the-ascent-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Fernando de Noronha" width="1790" height="2700"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.6048">
+          <img src="assets/photos/sancho-line-1200.webp"
+               srcset="assets/photos/sancho-line-1200.webp 1200w, assets/photos/sancho-line-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Fernando de Noronha" width="1080" height="673"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.5">
+          <img src="assets/photos/reticulated-1200.webp"
+               srcset="assets/photos/reticulated-1200.webp 1200w, assets/photos/reticulated-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Reticulated giraffe" width="1080" height="720"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.5084">
+          <img src="assets/photos/louvered-dusk-1200.webp"
+               srcset="assets/photos/louvered-dusk-1200.webp 1200w, assets/photos/louvered-dusk-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Dusk, through louvres" width="1080" height="716"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6626">
+          <img src="assets/photos/nothing-but-net-1200.webp"
+               srcset="assets/photos/nothing-but-net-1200.webp 1200w, assets/photos/nothing-but-net-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Court study" width="1080" height="1630"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6801">
+          <img src="assets/photos/the-wheel-1200.webp"
+               srcset="assets/photos/the-wheel-1200.webp 1200w, assets/photos/the-wheel-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Observation wheel" width="1080" height="1588"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.5944">
+          <img src="assets/photos/vesper-1200.webp"
+               srcset="assets/photos/vesper-1200.webp 1200w, assets/photos/vesper-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Last light on a chapel" width="1368" height="858"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.651">
+          <img src="assets/photos/postman-1200.webp"
+               srcset="assets/photos/postman-1200.webp 1200w, assets/photos/postman-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Postman butterfly" width="1080" height="1659"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.2821">
+          <img src="assets/photos/marsh-gold-1200.webp"
+               srcset="assets/photos/marsh-gold-1200.webp 1200w, assets/photos/marsh-gold-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Wetland at sunrise" width="2700" height="2106"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7789">
+          <img src="assets/photos/set-point-1200.webp"
+               srcset="assets/photos/set-point-1200.webp 1200w, assets/photos/set-point-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Beach volleyball" width="2103" height="2700"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.812">
+          <img src="assets/photos/rub-al-khali-1200.webp"
+               srcset="assets/photos/rub-al-khali-1200.webp 1200w, assets/photos/rub-al-khali-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Desert dunes" width="1080" height="1330"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7698">
+          <img src="assets/photos/wind-record-1200.webp"
+               srcset="assets/photos/wind-record-1200.webp 1200w, assets/photos/wind-record-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Desert dunes" width="1080" height="1403"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.717">
+          <img src="assets/photos/submerged-1200.webp"
+               srcset="assets/photos/submerged-1200.webp 1200w, assets/photos/submerged-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Hippopotamus" width="1080" height="629"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.9383">
+          <img src="assets/photos/black-swan-1200.webp"
+               srcset="assets/photos/black-swan-1200.webp 1200w, assets/photos/black-swan-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Black swan" width="1080" height="1151"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6737">
+          <img src="assets/photos/timber-sky-1200.webp"
+               srcset="assets/photos/timber-sky-1200.webp 1200w, assets/photos/timber-sky-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Timber and sky" width="1080" height="1603"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.4958">
+          <img src="assets/photos/filament-1200.webp"
+               srcset="assets/photos/filament-1200.webp 1200w, assets/photos/filament-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Structure against sky" width="1080" height="722"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.6875">
+          <img src="assets/photos/the-scrum-1200.webp"
+               srcset="assets/photos/the-scrum-1200.webp 1200w, assets/photos/the-scrum-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Rugby" width="1080" height="640"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.5393">
+          <img src="assets/photos/still-life-wall-1200.webp"
+               srcset="assets/photos/still-life-wall-1200.webp 1200w, assets/photos/still-life-wall-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Wall of plates" width="2700" height="1754"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.4516">
+          <img src="assets/photos/the-gondolier-1200.webp"
+               srcset="assets/photos/the-gondolier-1200.webp 1200w, assets/photos/the-gondolier-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Venice" width="2700" height="1860"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.4992">
+          <img src="assets/photos/aqueduct-1200.webp"
+               srcset="assets/photos/aqueduct-1200.webp 1200w, assets/photos/aqueduct-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Roman arches" width="2700" height="1801"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.4992">
+          <img src="assets/photos/flavian-1200.webp"
+               srcset="assets/photos/flavian-1200.webp 1200w, assets/photos/flavian-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="The Colosseum, Rome" width="2700" height="1801"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.4516">
+          <img src="assets/photos/fluting-1200.webp"
+               srcset="assets/photos/fluting-1200.webp 1200w, assets/photos/fluting-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Fluted column" width="2700" height="1860"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6567">
+          <img src="assets/photos/colonnade-1200.webp"
+               srcset="assets/photos/colonnade-1200.webp 1200w, assets/photos/colonnade-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Colonnade" width="1773" height="2700"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6567">
+          <img src="assets/photos/the-order-1200.webp"
+               srcset="assets/photos/the-order-1200.webp 1200w, assets/photos/the-order-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Colonnade" width="1773" height="2700"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.1489">
+          <img src="assets/photos/quadriga-1200.webp"
+               srcset="assets/photos/quadriga-1200.webp 1200w, assets/photos/quadriga-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Museum stair" width="2700" height="2350"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.3139">
+          <img src="assets/photos/leviathan-1200.webp"
+               srcset="assets/photos/leviathan-1200.webp 1200w, assets/photos/leviathan-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Open water" width="1080" height="822"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7248">
+          <img src="assets/photos/last-light-1200.webp"
+               srcset="assets/photos/last-light-1200.webp 1200w, assets/photos/last-light-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Sun on the horizon" width="1080" height="1490"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6459">
+          <img src="assets/photos/arterial-1200.webp"
+               srcset="assets/photos/arterial-1200.webp 1200w, assets/photos/arterial-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="City at night, long exposure" width="1080" height="1672"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6667">
+          <img src="assets/photos/the-spire-1200.webp"
+               srcset="assets/photos/the-spire-1200.webp 1200w, assets/photos/the-spire-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Burj Khalifa, Dubai" width="1080" height="1620"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6432">
+          <img src="assets/photos/three-domes-1200.webp"
+               srcset="assets/photos/three-domes-1200.webp 1200w, assets/photos/three-domes-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Sheikh Zayed Grand Mosque" width="1080" height="1679"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6667">
+          <img src="assets/photos/the-reflecting-pool-1200.webp"
+               srcset="assets/photos/the-reflecting-pool-1200.webp 1200w, assets/photos/the-reflecting-pool-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Sheikh Zayed Grand Mosque" width="1080" height="1620"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7574">
+          <img src="assets/photos/nave-1200.webp"
+               srcset="assets/photos/nave-1200.webp 1200w, assets/photos/nave-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Church interior" width="1080" height="1426"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6538">
+          <img src="assets/photos/place-des-vosges-1200.webp"
+               srcset="assets/photos/place-des-vosges-1200.webp 1200w, assets/photos/place-des-vosges-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Place des Vosges, Paris" width="1080" height="1652"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6538">
+          <img src="assets/photos/the-fountain-1200.webp"
+               srcset="assets/photos/the-fountain-1200.webp 1200w, assets/photos/the-fountain-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Place des Vosges, Paris" width="1080" height="1652"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6383">
+          <img src="assets/photos/sacre-coeur-1200.webp"
+               srcset="assets/photos/sacre-coeur-1200.webp 1200w, assets/photos/sacre-coeur-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Sacré-Cœur, Paris" width="1080" height="1692"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7912">
+          <img src="assets/photos/first-snow-1200.webp"
+               srcset="assets/photos/first-snow-1200.webp 1200w, assets/photos/first-snow-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Snow at night" width="1080" height="1365"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6708">
+          <img src="assets/photos/courtyard-1200.webp"
+               srcset="assets/photos/courtyard-1200.webp 1200w, assets/photos/courtyard-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Courtyard, looking up" width="1080" height="1610"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6268">
+          <img src="assets/photos/airtime-1200.webp"
+               srcset="assets/photos/airtime-1200.webp 1200w, assets/photos/airtime-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Skate session" width="1080" height="1723"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6549">
+          <img src="assets/photos/the-drop-1200.webp"
+               srcset="assets/photos/the-drop-1200.webp 1200w, assets/photos/the-drop-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Skate session" width="1080" height="1649"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6875">
+          <img src="assets/photos/kickflip-1200.webp"
+               srcset="assets/photos/kickflip-1200.webp 1200w, assets/photos/kickflip-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Skate session" width="1080" height="1571"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7775">
+          <img src="assets/photos/crossing-1200.webp"
+               srcset="assets/photos/crossing-1200.webp 1200w, assets/photos/crossing-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Crossing" width="1080" height="1389"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:1.5">
+          <img src="assets/photos/orangutan-1200.webp"
+               srcset="assets/photos/orangutan-1200.webp 1200w, assets/photos/orangutan-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Orangutan" width="1920" height="1280"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.6635">
+          <img src="assets/photos/santa-ollie-1200.webp"
+               srcset="assets/photos/santa-ollie-1200.webp 1200w, assets/photos/santa-ollie-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Skate session" width="1274" height="1920"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.5599">
+          <img src="assets/photos/white-volume-1200.webp"
+               srcset="assets/photos/white-volume-1200.webp 1200w, assets/photos/white-volume-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="Study in form" width="1080" height="1929"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <figure class="cell" data-span="4">
+        <span class="cell__media" style="aspect-ratio:0.7774">
+          <img src="assets/photos/portrait-1200.webp"
+               srcset="assets/photos/portrait-1200.webp 1200w, assets/photos/portrait-2400.webp 2400w"
+               sizes="(max-width: 900px) 92vw, 31vw"
+               alt="University of Florida" width="2099" height="2700"
+               loading="lazy" decoding="async" />
+        </span>
+      </figure>
+      <!-- grid:end -->
+    </div>
+
+    <p class="work__empty" id="gridEmpty" hidden>No frames in that category yet.</p>
+
+    <div class="work__more">
+      <button id="gridMore" class="moreBtn" hidden>
+        Show the rest
+      </button>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── 04 · quiet moment ─────────────────────── -->
+  <section class="quiet" id="quiet" aria-label="Featured frame">
+    <figure class="quiet__figure">
+      <img id="quietImg" alt="Fluted stone column photographed from below in black and white."
+           width="2400" height="2089" loading="lazy" decoding="async" />
+      <figcaption class="quiet__cap">
+        <span class="quiet__note" id="quietNote">Fluted column</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ─────────────────────────── 05 · about ────────────────────────── -->
+  <section class="about" id="about">
+    <div class="about__grid">
+      <figure class="about__portrait" data-reveal>
+        <img id="aboutImg" alt="Rafa Diniz's work: a lone figure crossing a bright crosswalk, shot from above."
+             width="1200" height="1543" loading="lazy" decoding="async" />
+      </figure>
+
+      <div class="about__body">
+        <h2 class="about__title" data-split>About</h2>
+        <p class="about__lead">
+          I'm Rafa, a Brazilian photographer and filmmaker.
+        </p>
+        <p>
+          Most of the paid work is documentary and brand film. In between I
+          photograph constantly: buildings, birds, landscapes, sport, and
+          whatever the street offers.
+        </p>
+        <p>
+          The two feed each other. Waiting for a bird to land is the same
+          patience a documentary asks for, and editing film taught me to
+          read a photograph as one shot out of a sequence.
+        </p>
+        <p>
+          I live between Brazil and the United States and I travel for work.
+        </p>
+
+        <dl class="about__facts">
+          <div><dt>Stills</dt><dd>Architecture, wildlife, landscape, street and sport</dd></div>
+          <div><dt>Motion</dt><dd>Documentary, brand film and event</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 06 · services ──────────────────────── -->
+  <section class="serv" id="services">
+    <h2 class="serv__title">What I take on</h2>
+    <ul class="serv__list">
+      <li><a href="#contact"><span class="serv__name">Documentary</span></a></li>
+      <li><a href="#contact"><span class="serv__name">Brand&nbsp;film</span></a></li>
+      <li><a href="#contact"><span class="serv__name">Portraiture</span></a></li>
+      <li><a href="#contact"><span class="serv__name">Editorial</span></a></li>
+      <li><a href="#contact"><span class="serv__name">Prints</span></a></li>
+    </ul>
+  </section>
+
+  <!-- ────────────────────────── 07 · contact ───────────────────────── -->
+  <section class="contact" id="contact">
+    <h2 class="contact__title" data-split>Get in touch</h2>
+    <p class="contact__copy">
+      Tell me what you are making. Film work, photography, prints, or a
+      question about a frame.
+    </p>
+    <a class="contact__mail" href="mailto:hello@rafadiniz.com">hello@rafadiniz.com</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__row">
+    <p class="foot__mark">Rafa&nbsp;Diniz</p>
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="https://www.youtube.com/@Rafap.diniz-jornal" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+      <a href="#films">Films</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="foot__row foot__row--fine">
+    <p>Brazil / United States</p>
+    <p>© <span id="year">2026</span> Rafa Diniz. All photographs and films are his own.</p>
+  </div>
+</footer>
+
+<!-- ─────────────────────────── lightbox ─────────────────────────── -->
+<div class="lb" id="lb" hidden>
+  <div class="lb__scrim" data-lb-close></div>
+  <figure class="lb__figure">
+    <img class="lb__img" id="lbImg" alt="" />
+    <figcaption class="lb__cap">
+      <span class="lb__title" id="lbTitle"></span>
+      <span class="lb__note" id="lbNote"></span>
+      <span class="lb__count" id="lbCount"></span>
+    </figcaption>
+  </figure>
+  <button class="lb__btn lb__btn--prev" id="lbPrev" aria-label="Previous frame"></button>
+  <button class="lb__btn lb__btn--next" id="lbNext" aria-label="Next frame"></button>
+  <button class="lb__close" id="lbClose" aria-label="Close">Close</button>
+</div>
+
+<!-- ───────────────────────── film player ────────────────────────── -->
+<div class="vp" id="vp" hidden>
+  <div class="vp__scrim" data-vp-close></div>
+  <div class="vp__box">
+    <div class="vp__frame" id="vpFrame"></div>
+  </div>
+  <!-- Chrome sits on the overlay, not inside the box: as a child of the box it
+       was positioned against the picture and covered the top right of it. -->
+  <div class="vp__chrome">
+    <button class="vp__btn" id="vpFull" aria-pressed="false">Fullscreen</button>
+    <button class="vp__btn" id="vpClose" aria-label="Close film">Close</button>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

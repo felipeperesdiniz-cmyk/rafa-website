@@ -1,0 +1,22 @@
+# Rafa's camera originals and the showreel master, about 191 MB in total.
+# They are the *input* to tools/build-images.py and tools/build-video.sh, not
+# something a public repository should carry: full resolution frames should
+# not be downloadable from here, and an 86 MB .mov would sit in the history
+# permanently. Keep them in this folder as they are; the generated web
+# derivatives under site/assets/ are committed and are what the site serves.
+#
+# The leading slash anchors each pattern to the repository root, so nothing
+# inside site/assets/ is affected.
+/*.jpg
+/*.JPG
+/*.jpeg
+/*.png
+/*.mov
+/*.mp4
+
+# Screenshots of an earlier iteration of the design. They no longer match the
+# site and would only mislead.
+/preview/
+
+.DS_Store
+__pycache__/
