@@ -24,6 +24,34 @@ const CATS = [
 
 const photoSrc = (slug, w) => `assets/photos/${slug}-${w}.webp`;
 
+/* ── overlay background ───────────────────────────────────
+   `is-locked` stops the page scrolling behind an overlay, but a screen
+   reader could still walk through it. `inert` removes it from the
+   accessibility tree and the tab order for as long as the overlay is up.
+   The hero takeover also drives `hdr.inert`, so the previous value is put
+   back rather than assumed, and the two never fight over it. */
+const BEHIND = ['#hdr', 'main', '.foot'];
+let inertWas = null;
+
+function setBackgroundInert(on) {
+  if (on) {
+    if (inertWas) return;                 // already down; don't re-record
+    inertWas = BEHIND.map((sel) => {
+      const el = $(sel);
+      const was = el ? el.inert : false;
+      if (el) el.inert = true;
+      return was;
+    });
+  } else {
+    if (!inertWas) return;
+    BEHIND.forEach((sel, n) => {
+      const el = $(sel);
+      if (el) el.inert = inertWas[n];
+    });
+    inertWas = null;
+  }
+}
+
 /* ── external libs ────────────────────────────────────────
    Loaded from CDN. Everything below degrades to a complete,
    readable page if these never arrive. */
@@ -113,10 +141,19 @@ function heroVideo() {
 
   // Save mobile data: the small cut is meaningfully lighter, and the
   // poster alone is a complete first frame if playback never starts.
+  //
+  // Within a tier the WebM and the MP4 are the same resolution, so which one
+  // a browser picks is a question of bytes, not of picture. They were once
+  // 1280 and 1600, which quietly gave Chrome and Firefox the softer hero and
+  // Safari the sharp one. The master crops to 1920 wide, so -xl is the
+  // ceiling; there is nothing above it that is not an upscale.
   const small = window.matchMedia('(max-width: 760px)').matches;
+  const wide  = window.matchMedia('(min-width: 1400px)').matches;
   const sources = small
     ? [['assets/video/hero-loop-sm.mp4', 'video/mp4']]
-    : [['assets/video/hero-loop.webm', 'video/webm'], ['assets/video/hero-loop.mp4', 'video/mp4']];
+    : wide
+      ? [['assets/video/hero-loop-xl.webm', 'video/webm'], ['assets/video/hero-loop-xl.mp4', 'video/mp4']]
+      : [['assets/video/hero-loop.webm', 'video/webm'], ['assets/video/hero-loop.mp4', 'video/mp4']];
 
   if (REDUCED) return; // poster stands in; never autoplay under reduced motion
 
@@ -212,6 +249,15 @@ function heroTakeover() {
   // Beats, as fractions of the section's scroll. Everything is expressed in
   // these units so the choreography can be read at a glance and retuned in
   // one place.
+  // 14 MB is a lot to spend on someone's behalf. On a metered or slow
+  // connection the takeover keeps the hero loop the whole way through
+  // instead: the titles still dissolve, the bars still close, and the
+  // labelled "Play the showreel" button is still there for anyone who
+  // actually wants the film.
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const frugal = !!conn && (conn.saveData === true ||
+                            ['slow-2g', '2g', '3g'].includes(conn.effectiveType));
+
   const ARM  = 0.01;   // begin fetching the reel
   const PLAY = 0.16;   // start it playing, still invisible, so it has decoded
   const HDR  = 0.10;   // header leaves with the titles
@@ -356,7 +402,7 @@ function heroTakeover() {
 
       // 13 MB file, so start fetching on intent, not on load, and switch to
       // eager buffering so a frame is ready well before SWAP.
-      if (!armed && p > ARM) {
+      if (!armed && !frugal && p > ARM) {
         armed = true;
         reel.preload = 'auto';
         reel.src = 'assets/video/reel.mp4';
@@ -367,10 +413,12 @@ function heroTakeover() {
       // the bars close over it. Reverting near the end flipped the frame back
       // to the loop at exactly the wrong moment. Playback stops on the way
       // out of the section instead (onLeave / onLeaveBack).
-      if (p >= PLAY) startReel();
+      if (p >= PLAY && !frugal) startReel();
 
-      swap(p >= SWAP);
-      setControls(p >= CTL && p < HOLD);
+      swap(!frugal && p >= SWAP);
+      // No reel means no player chrome: a sound toggle for a film that is
+      // not playing would be a control that does nothing.
+      setControls(!frugal && p >= CTL && p < HOLD);
       setHeader(p >= HDR && p < HDR_BACK);
     },
     onLeave: () => reel.pause(),
@@ -514,13 +562,22 @@ function cell({ photo, span, drop }, index) {
   el.dataset.span = String(span);
   if (drop) el.dataset.drop = String(drop);
 
+  // `srcs` holds the widths this photograph actually has, ascending. Anything
+  // it does not list does not exist on disk, so the srcset never asks the
+  // browser to weigh up a file that isn't there. A single-variant frame gets
+  // no srcset at all: there is nothing to choose between.
+  const srcs = photo.srcs || [1200];
+  const srcset = srcs.length > 1
+    ? `srcset="${srcs.map((w) => `${photoSrc(photo.slug, w)} ${w}w`).join(', ')}"
+          sizes="(max-width: 900px) 92vw, ${Math.round((span / 12) * 92)}vw"`
+    : '';
+
   el.innerHTML = `
     <button class="cell__btn" data-index="${index}">
       <span class="cell__media" style="aspect-ratio:${photo.ratio};background-image:url('${photo.lqip}')">
         <img
-          src="${photoSrc(photo.slug, 1200)}"
-          srcset="${photoSrc(photo.slug, 1200)} 1200w, ${photoSrc(photo.slug, 2400)} 2400w"
-          sizes="(max-width: 900px) 92vw, ${Math.round((span / 12) * 92)}vw"
+          src="${photoSrc(photo.slug, srcs[0])}"
+          ${srcset}
           alt="${photo.place}"
           width="${photo.w}" height="${photo.h}"
           loading="lazy" decoding="async" />
@@ -594,9 +651,11 @@ function lightbox() {
   const paint = () => {
     const p = visible[i];
     if (!p) return;
-    img.src = photoSrc(p.slug, 2400);
+    img.style.transition = 'none';
+    img.style.transform = '';
+    // The best this frame has, which is not always 2400.
+    img.src = photoSrc(p.slug, (p.srcs || [1200]).at(-1));
     img.alt = p.place;
-    $('#lbTitle').textContent = p.place;
     $('#lbNote').textContent = p.cat;
     $('#lbCount').textContent = `${i + 1} / ${visible.length}`;
   };
@@ -605,6 +664,7 @@ function lightbox() {
     i = index; opener = from;
     lb.hidden = false;
     document.body.classList.add('is-locked');
+    setBackgroundInert(true);
     lenis?.stop();
     paint();
     $('#lbClose').focus();
@@ -613,6 +673,7 @@ function lightbox() {
   const close = () => {
     lb.hidden = true;
     document.body.classList.remove('is-locked');
+    setBackgroundInert(false);
     lenis?.start();
     img.removeAttribute('src');
     opener?.focus();
@@ -629,6 +690,49 @@ function lightbox() {
   $('#lbPrev').addEventListener('click', () => step(-1));
   $('#lbNext').addEventListener('click', () => step(1));
   $$('[data-lb-close]').forEach((el) => el.addEventListener('click', close));
+
+  /* Swipe. On a phone the chevrons are the only way through the set, which
+     for a gallery is not enough. The frame follows the finger so the gesture
+     has a visible consequence, then either advances or springs back.
+     Mouse pointers are left alone: dragging a picture with a mouse is not a
+     gesture anyone makes, and claiming pointer capture would break the
+     click-to-close on the scrim. */
+  const figure = $('.lb__figure');
+  let sx = 0, sy = 0, dx = 0, tracking = false;
+
+  const settle = (offset, ms) => {
+    img.style.transition = ms ? `transform ${ms}ms cubic-bezier(.22,.61,.36,1)` : 'none';
+    img.style.transform = offset ? `translateX(${offset}px)` : '';
+  };
+
+  figure.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse') return;
+    tracking = true; dx = 0;
+    sx = e.clientX; sy = e.clientY;
+    settle(0, 0);
+  }, { passive: true });
+
+  figure.addEventListener('pointermove', (e) => {
+    if (!tracking) return;
+    const mx = e.clientX - sx;
+    // A mostly-vertical drag is the browser's business, not ours.
+    if (Math.abs(e.clientY - sy) > Math.abs(mx) * 1.2) { tracking = false; settle(0, 180); return; }
+    dx = mx;
+    if (!REDUCED) settle(dx * .45, 0);
+  }, { passive: true });
+
+  const release = () => {
+    if (!tracking) return;
+    tracking = false;
+    const moved = dx;
+    settle(0, 200);
+    if (Math.abs(moved) > 44) step(moved < 0 ? 1 : -1);
+    dx = 0;
+  };
+
+  figure.addEventListener('pointerup', release, { passive: true });
+  figure.addEventListener('pointercancel', release, { passive: true });
+  figure.addEventListener('pointerleave', release, { passive: true });
 
   document.addEventListener('keydown', (e) => {
     if (lb.hidden) return;
@@ -683,6 +787,7 @@ function filmPlayer() {
     vp.hidden = true;
     frame.innerHTML = '';   // also stops a local <video> dead
     document.body.classList.remove('is-locked');
+    setBackgroundInert(false);
     lenis?.start();
     const hero = $('#heroVideo');
     if (hero && !REDUCED && hero.getBoundingClientRect().bottom > 0) hero.play().catch(() => {});
@@ -697,6 +802,7 @@ function filmPlayer() {
     fullBtn.hidden = !canFull();
     syncFullBtn();
     document.body.classList.add('is-locked');
+    setBackgroundInert(true);
     lenis?.stop();
     // Nothing should still be playing behind the overlay.
     $('#heroVideo')?.pause();
@@ -751,16 +857,15 @@ function staticBits() {
   const q = pick('fluting');
   const qImg = $('#quietImg');
   if (q && qImg) {
-    qImg.src = photoSrc(q.slug, 2400);
+    qImg.src = photoSrc(q.slug, (q.srcs || [1200]).at(-1));
     qImg.style.backgroundImage = `url('${q.lqip}')`;
     qImg.alt = q.place;
-    $('#quietNote').textContent = q.place;
   }
 
   const a = pick('crossing');
   const aImg = $('#aboutImg');
   if (a && aImg) {
-    aImg.src = photoSrc(a.slug, 1200);
+    aImg.src = photoSrc(a.slug, (a.srcs || [1200])[0]);
     aImg.style.backgroundImage = `url('${a.lqip}')`;
     aImg.alt = a.place;
   }

@@ -25,10 +25,26 @@ ffmpeg -y -v error -ss 4.2 -i "$SRC" -t 22 -an \
   -c:v libx264 -profile:v high -crf 30 -preset slow -pix_fmt yuv420p \
   -movflags +faststart "$OUT/hero-loop.mp4"
 
+# The WebM must match its MP4 sibling's resolution. It is listed first in the
+# markup, so every VP9-capable browser takes it -- when it was 1280 against a
+# 1600 MP4, that meant Chrome and Firefox got the soft hero and only Safari
+# got the sharp one. Same pixels, fewer bytes, is the whole point of offering it.
 ffmpeg -y -v error -ss 4.2 -i "$SRC" -t 22 -an \
-  -vf "$HERO_CROP,scale=1280:-2:flags=lanczos,fps=24" \
-  -c:v libvpx-vp9 -crf 42 -b:v 0 -row-mt 1 -deadline good -cpu-used 2 \
+  -vf "$HERO_CROP,scale=1600:-2:flags=lanczos,fps=24" \
+  -c:v libvpx-vp9 -crf 41 -b:v 0 -row-mt 1 -deadline good -cpu-used 2 \
   "$OUT/hero-loop.webm"
+
+# --- Large displays. The master crops to 1920 wide, so this is the ceiling:
+# --- anything beyond it would be an upscale pretending to be detail.
+ffmpeg -y -v error -ss 4.2 -i "$SRC" -t 22 -an \
+  -vf "$HERO_CROP,scale=1920:-2:flags=lanczos,fps=24" \
+  -c:v libx264 -profile:v high -crf 30 -preset slow -pix_fmt yuv420p \
+  -movflags +faststart "$OUT/hero-loop-xl.mp4"
+
+ffmpeg -y -v error -ss 4.2 -i "$SRC" -t 22 -an \
+  -vf "$HERO_CROP,scale=1920:-2:flags=lanczos,fps=24" \
+  -c:v libvpx-vp9 -crf 40 -b:v 0 -row-mt 1 -deadline good -cpu-used 2 \
+  "$OUT/hero-loop-xl.webm"
 
 # Mobile: the weight matters more than the resolution here.
 ffmpeg -y -v error -ss 4.2 -i "$SRC" -t 22 -an \
@@ -45,6 +61,12 @@ ffmpeg -y -v error -i "$SRC" \
 
 # --- Posters, pulled from frames that actually have an image on them.
 ffmpeg -y -v error -ss 8  -i "$SRC" -frames:v 1 -vf "$HERO_CROP,scale=1920:-2" -q:v 3 "$OUT/hero-poster.jpg"
+
+# --- Social share card. 2.39:1 gets cropped hard by every preview, so this is
+# --- cut to the 1.91:1 the Open Graph tags declare.
+ffmpeg -y -v error -ss 8 -i "$SRC" -frames:v 1 \
+  -vf "$HERO_CROP,scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630" \
+  -q:v 3 "$OUT/share-card.jpg"
 ffmpeg -y -v error -ss 30 -i "$SRC" -frames:v 1 -vf "$CROP,scale=1920:-2" -q:v 3 "$OUT/reel-poster.jpg"
 
 # --- Film stills for the two directed pieces, cut from the reel sections

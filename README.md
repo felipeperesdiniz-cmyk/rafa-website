@@ -26,14 +26,24 @@ project root, untouched. Nothing is overwritten or deleted.
 
 ## Things to change before this goes live
 
-1. **The email address.** `hello@rafadiniz.com` in `site/index.html` is a
-   placeholder. Search for it and put the real one in (it appears once in the
-   contact section).
-2. **The domain.** `https://rafadiniz.com/` appears in the `canonical` link and
-   the JSON-LD block at the top of `site/index.html`.
-3. **The captions.** See below. They are my best reading of each photo, not
-   Rafa's own record.
-4. **Social links.** Only YouTube is linked, in the footer. Add Instagram etc.
+1. ~~**The email address.**~~ Set to `rafaeldiniz2@gmail.com` in the contact
+   section and the JSON-LD block of `site/index.html`.
+2. **The domain.** `https://rafadiniz.com/` appears in the `canonical` link, the
+   JSON-LD block, and the `og:`/`twitter:` tags at the top of `site/index.html`.
+   The social tags need absolute URLs to work at all, so if the live domain is
+   anything else, every shared link loses its preview image until they are
+   updated. Search for `rafadiniz.com` and change all of them together.
+3. **Bigger originals, wherever they exist.** 35 of the 47 photographs come from
+   files whose long edge is under 2400px, and seven are 1080px. The site is
+   honest about this now — it only ever offers the widths a picture actually
+   has — but no amount of code recovers detail that was never in the file.
+   Re-export those frames from the camera originals and rerun the build; the
+   script prints the list every time. This is the single biggest visible
+   improvement left.
+4. **The captions.** None are shown any more — the gallery, the lightbox and
+   the featured frame carry no per-photo names. The manifest `title`/`place`
+   values now only feed `alt` text for screen readers and search engines.
+5. **Social links.** Only YouTube is linked, in the footer. Add Instagram etc.
 
 ---
 
@@ -45,21 +55,28 @@ project root, untouched. Nothing is overwritten or deleted.
 {
   "src": "IMG_1731 copy.jpg",     // filename in the project root
   "slug": "flavian",              // used for the generated filenames + URLs
-  "title": "Flavian",             // shown under the frame
+  "title": "Flavian",             // not displayed; internal label only
   "cat": "architecture",          // architecture | landscape | wildlife
                                   // street | sport | portrait
-  "place": "The Colosseum, Rome", // the small caption
+  "place": "The Colosseum, Rome", // used only as image alt text
   "year": ""                      // currently unused; safe to leave blank
 }
 ```
 
-**On the captions:** the `title` values in the manifest were invented by
-looking at each photograph, so the site no longer displays them. The grid is
-silent and the lightbox shows the `place` line and the category. Where the
-subject identifies itself (the Colosseum, Sacré-Cœur, Place des Vosges, Burj
-Khalifa, the Sheikh Zayed Mosque, Morro Dois Irmãos, the UF graduations) the
-`place` says so; everywhere else it describes the subject rather than guessing
-a location. Read through those and correct anything wrong.
+**On derivative sizes:** the build writes one WebP per width the source can
+actually fill, named for its real pixel width — `slug-1200.webp`,
+`slug-1680.webp`, and so on — and records those widths in `photos.js` as
+`srcs`. A source that is only 1080px produces exactly one 1080px file and no
+`srcset`, because there is nothing to choose between. Nothing is ever upscaled
+and no filename claims a size the file does not have, so the width in the
+markup is always the width on disk.
+
+**On the captions:** the `title` and `place` values in the manifest were
+invented by looking at each photograph, so nothing on the site displays them.
+The grid is silent, the lightbox shows only the category and the position in
+the set, and the featured frame has no caption. `place` survives as `alt` text
+so the pictures still describe themselves to screen readers — read through
+those and correct anything wrong.
 
 If you want named frames back, put real titles in the manifest and restore the
 `figcaption` in `cell()` in `site/js/main.js` and in `tools/build-images.py`.

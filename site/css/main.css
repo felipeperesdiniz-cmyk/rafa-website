@@ -9,7 +9,9 @@
   --ink-2:      #121213;
   --paper:      #f3f0ea;
   --paper-dim:  #a9a49b;
-  --paper-mute: #6d6862;
+  /* 5.06:1 on --ink. The previous #6d6862 was 3.59:1, and every use of it
+     is 10-11px mono, which is exactly where WCAG asks for 4.5:1. */
+  --paper-mute: #85807a;
   --line:       rgba(243, 240, 234, .14);
   --line-soft:  rgba(243, 240, 234, .07);
   --ember:      #e2542c;
@@ -452,12 +454,6 @@ html.js .cell__media img.is-loaded { opacity: 1; }
   pointer-events: none;
 }
 .quiet__figure img { width: 100%; height: clamp(60vh, 86vh, 100svh); object-fit: cover; }
-.quiet__cap {
-  position: absolute; z-index: 1; left: var(--edge); bottom: var(--edge);
-  display: grid; gap: 8px;
-  text-shadow: 0 1px 30px rgba(10, 10, 11, .7);
-}
-.quiet__note { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-dim); }
 
 /* ── 06 about ────────────────────────────────────────────── */
 .about {
@@ -542,9 +538,11 @@ html.js .cell__media img.is-loaded { opacity: 1; }
   max-width: min(94vw, 1500px); max-height: 86svh;
   display: grid; gap: 14px; justify-items: center;
 }
+/* The overlay already locks the page, so a horizontal drag here is ours to
+   read as a swipe. `pan-y` keeps the browser's vertical gestures intact. */
+.lb__figure { touch-action: pan-y; }
 .lb__img { max-width: 100%; max-height: 74svh; width: auto; height: auto; object-fit: contain; }
 .lb__cap { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; justify-content: center; }
-.lb__title { font-weight: 600; letter-spacing: -.01em; }
 .lb__note, .lb__count { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--paper-mute); }
 
 .lb__btn {
