@@ -562,7 +562,7 @@ html.js .cell__media img.is-loaded { opacity: 1; }
 .lb__btn--next { right: clamp(8px, 2vw, 30px); }
 .lb__btn--next::after { transform: translate(-70%, -50%) rotate(-135deg); }
 
-.lb__close, .vp__btn {
+.lb__close {
   font-family: var(--f-mono); font-size: 11px;
   letter-spacing: .14em; text-transform: uppercase;
   padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px;
@@ -570,12 +570,7 @@ html.js .cell__media img.is-loaded { opacity: 1; }
   transition: background .26s var(--ease), color .26s var(--ease);
 }
 .lb__close { position: absolute; z-index: 2; top: var(--edge); right: var(--edge); }
-.lb__close:hover, .vp__btn:hover { background: var(--paper); color: var(--ink); }
-.vp__chrome {
-  position: absolute; z-index: 2; top: var(--edge); right: var(--edge);
-  display: flex; gap: 10px;
-}
-
+.lb__close:hover { background: var(--paper); color: var(--ink); }
 /* ── film player ─────────────────────────────────────────── */
 /* `--vp-ar` is the aspect ratio of whatever is playing, set by the player when
    it opens. Capping the width by the height as well as the viewport keeps a
@@ -590,12 +585,6 @@ html.js .cell__media img.is-loaded { opacity: 1; }
 .vp__frame iframe,
 .vp__frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .vp__frame video { object-fit: contain; background: #000; }
-
-/* Fullscreen promotes the box to the top layer, where the author width above
-   would otherwise still apply and leave the picture floating in a black
-   screen. Let it fill, and let the frame drop its ratio box. */
-.vp__box:fullscreen { width: 100%; height: 100%; background: #000; display: grid; }
-.vp__box:fullscreen .vp__frame { width: 100%; height: 100%; aspect-ratio: auto; }
 
 /* ── enhanced-only initial states ────────────────────────── */
 html.js [data-reveal] { opacity: 0; transform: translateY(22px); }
@@ -686,7 +675,7 @@ html.js .split__inner { display: inline-block; transform: translateY(105%); }
   .menu__nav a { min-height: 44px; display: inline-flex; align-items: center; }
   .contact__mail { align-items: baseline; }
   .lb__btn { min-width: 52px; min-height: 52px; }
-  .filters button, .moreBtn, .playBtn, .heroCtl, .lb__close, .vp__btn {
+  .filters button, .moreBtn, .playBtn, .heroCtl, .lb__close {
     min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
   }
 }

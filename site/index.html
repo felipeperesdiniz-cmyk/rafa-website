@@ -746,16 +746,14 @@
 </div>
 
 <!-- ───────────────────────── film player ────────────────────────── -->
-<div class="vp" id="vp" role="dialog" aria-modal="true" aria-label="Film player" hidden>
+<!-- No chrome of our own. The player already carries its own controls,
+     fullscreen included, and a second set floating above them was two ways to
+     do the same thing. Closing is the scrim or Escape; `tabindex` lets the
+     overlay itself take focus on open now that there is no button to hold it. -->
+<div class="vp" id="vp" role="dialog" aria-modal="true" aria-label="Film player" tabindex="-1" hidden>
   <div class="vp__scrim" data-vp-close></div>
   <div class="vp__box">
     <div class="vp__frame" id="vpFrame"></div>
-  </div>
-  <!-- Chrome sits on the overlay, not inside the box: as a child of the box it
-       was positioned against the picture and covered the top right of it. -->
-  <div class="vp__chrome">
-    <button class="vp__btn" id="vpFull" aria-pressed="false">Fullscreen</button>
-    <button class="vp__btn" id="vpClose" aria-label="Close film">Close</button>
   </div>
 </div>
 

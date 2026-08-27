@@ -754,33 +754,14 @@ function lightbox() {
    so the page carries no third-party weight or cookies on load. */
 function filmPlayer() {
   const vp = $('#vp');
-  const box = $('.vp__box');
   const frame = $('#vpFrame');
-  const fullBtn = $('#vpFull');
   let opener = null;
 
-  // Element fullscreen is unavailable on iPhone: Safari there only fullscreens
-  // a <video> through its own method. Hide the control when neither exists.
-  const canFull = () =>
-    document.fullscreenEnabled || typeof $('video', frame)?.webkitEnterFullscreen === 'function';
-
-  const isFull = () => document.fullscreenElement === box;
-
-  const syncFullBtn = () => {
-    fullBtn.textContent = isFull() ? 'Exit fullscreen' : 'Fullscreen';
-    fullBtn.setAttribute('aria-pressed', String(isFull()));
-  };
-
-  const toggleFull = async () => {
-    try {
-      if (document.fullscreenElement) { await document.exitFullscreen(); return; }
-      if (document.fullscreenEnabled) { await box.requestFullscreen(); return; }
-      $('video', frame)?.webkitEnterFullscreen?.();
-    } catch {
-      // A rejected request leaves the film playing in the overlay, which is
-      // still a usable outcome, so there is nothing to recover here.
-    }
-  };
+  // Fullscreen belongs to the player. YouTube's iframe carries `allowfullscreen`
+  // and the local reel is a <video controls>, so both already offer it exactly
+  // where a viewer looks for it. Driving it a second time from our own button
+  // meant two controls for one thing, and on iPhone the top one silently did
+  // nothing: Safari there will only fullscreen a <video>, through its own method.
 
   const close = () => {
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -799,15 +780,15 @@ function filmPlayer() {
     vp.style.setProperty('--vp-ar', String(ratio));
     frame.innerHTML = markup;
     vp.hidden = false;
-    fullBtn.hidden = !canFull();
-    syncFullBtn();
     document.body.classList.add('is-locked');
     setBackgroundInert(true);
     lenis?.stop();
     // Nothing should still be playing behind the overlay.
     $('#heroVideo')?.pause();
     $('#heroReelVideo')?.pause();
-    $('#vpClose').focus();
+    // The overlay itself takes focus, so Escape reaches the handler below and
+    // the first Tab lands in the player rather than back on the locked page.
+    vp.focus();
   };
 
   // The two directed films live on YouTube.
@@ -834,9 +815,6 @@ function filmPlayer() {
     });
   });
 
-  $('#vpClose').addEventListener('click', close);
-  fullBtn.addEventListener('click', toggleFull);
-  document.addEventListener('fullscreenchange', syncFullBtn);
   $$('[data-vp-close]').forEach((el) => el.addEventListener('click', close));
   document.addEventListener('keydown', (e) => {
     if (vp.hidden || e.key !== 'Escape') return;
