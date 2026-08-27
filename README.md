@@ -24,6 +24,23 @@ project root, untouched. Nothing is overwritten or deleted.
 
 ---
 
+## Deploying
+
+The site lives in `site/`, not at the repository root, so Vercel has to be told
+where it is. `vercel.json` at the root does that with `outputDirectory: "site"`.
+Without it Vercel serves the repository root, which has no `index.html`, and
+every URL returns `404: NOT_FOUND` while the build still reports success --
+the build genuinely did succeed, there is just nothing to serve at `/`.
+
+The equivalent fix is setting **Root Directory** to `site` in the Vercel
+project settings, which is arguably tidier and is what `site/vercel.json` was
+written for. Both are in place, and they do not conflict: Vercel reads whichever
+`vercel.json` sits at the root of what it is deploying, so if the Root Directory
+setting is ever switched to `site`, the copy inside `site/` takes over and the
+headers stay identical. If you change the caching rules, change them in both.
+
+---
+
 ## Things to change before this goes live
 
 1. ~~**The email address.**~~ Set to `rafaeldiniz2@gmail.com` in the contact
