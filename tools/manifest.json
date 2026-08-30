@@ -5,6 +5,7 @@
     "title": "Leading Line",
     "cat": "street",
     "place": "Long exposure",
+    "alt": "Traffic reduced to streaks of light on a dark highway in a long exposure.",
     "year": ""
   },
   {
@@ -13,6 +14,7 @@
     "title": "Morro Dois Irmãos",
     "cat": "landscape",
     "place": "Morro Dois Irmãos, Fernando de Noronha",
+    "alt": "The rock peak above Fernando de Noronha, seen across a beach of white parasols and clear shallows.",
     "year": ""
   },
   {
@@ -21,6 +23,7 @@
     "title": "The Ascent",
     "cat": "street",
     "place": "Fernando de Noronha",
+    "alt": "Bare feet and legs dangling over the lip of a sunlit cliff against a blue sky, Fernando de Noronha.",
     "year": ""
   },
   {
@@ -29,6 +32,7 @@
     "title": "Sancho Line",
     "cat": "landscape",
     "place": "Fernando de Noronha",
+    "alt": "Bathers on a sandbar with a small island offshore, Fernando de Noronha.",
     "year": ""
   },
   {
@@ -37,6 +41,7 @@
     "title": "Reticulated",
     "cat": "wildlife",
     "place": "Reticulated giraffe",
+    "alt": "The necks of two reticulated giraffes crossing, their patterning filling the frame.",
     "year": ""
   },
   {
@@ -45,6 +50,7 @@
     "title": "Louvered Dusk",
     "cat": "landscape",
     "place": "Dusk, through louvres",
+    "alt": "A pink and gold dusk sky read through the vertical slats of a louvre.",
     "year": ""
   },
   {
@@ -53,6 +59,7 @@
     "title": "Nothing But Net",
     "cat": "sport",
     "place": "Court study",
+    "alt": "An empty basketball net hanging against a pale sky, shot from below.",
     "year": ""
   },
   {
@@ -61,6 +68,7 @@
     "title": "The Wheel",
     "cat": "street",
     "place": "Observation wheel",
+    "alt": "Half an observation wheel, its cabins catching low sun against a clear sky.",
     "year": ""
   },
   {
@@ -69,6 +77,7 @@
     "title": "Vesper",
     "cat": "landscape",
     "place": "Last light on a chapel",
+    "alt": "A chapel roofline in silhouette against a pink dusk sky.",
     "year": ""
   },
   {
@@ -77,6 +86,7 @@
     "title": "Postman",
     "cat": "wildlife",
     "place": "Postman butterfly",
+    "alt": "A red and black postman butterfly in flight beside dark rainforest leaves.",
     "year": ""
   },
   {
@@ -85,6 +95,7 @@
     "title": "Marsh Gold",
     "cat": "landscape",
     "place": "Wetland at sunrise",
+    "alt": "Sunrise over a wetland, mist standing on the reeds and the water holding the gold.",
     "year": ""
   },
   {
@@ -93,6 +104,7 @@
     "title": "Set Point",
     "cat": "sport",
     "place": "Beach volleyball",
+    "alt": "A beach volleyball player rising to strike, another crouched ready in the sand.",
     "year": ""
   },
   {
@@ -101,6 +113,7 @@
     "title": "Rub' al Khali",
     "cat": "landscape",
     "place": "Desert dunes",
+    "alt": "A line of footprints crossing rippled orange dune sand.",
     "year": ""
   },
   {
@@ -109,6 +122,7 @@
     "title": "Wind Record",
     "cat": "landscape",
     "place": "Desert dunes",
+    "alt": "Wind ridges and scattered twigs recorded across an orange dune face.",
     "year": ""
   },
   {
@@ -117,6 +131,7 @@
     "title": "Submerged",
     "cat": "wildlife",
     "place": "Hippopotamus",
+    "alt": "A hippopotamus at the waterline, only its eye and ears above the surface.",
     "year": ""
   },
   {
@@ -125,6 +140,7 @@
     "title": "Black Swan",
     "cat": "wildlife",
     "place": "Black swan",
+    "alt": "A black swan in close profile, its red bill tipped with white.",
     "year": ""
   },
   {
@@ -133,6 +149,7 @@
     "title": "Timber & Sky",
     "cat": "architecture",
     "place": "Timber and sky",
+    "alt": "Looking up a slot of blue sky between tall pale columns, a carved figure at their foot.",
     "year": ""
   },
   {
@@ -141,6 +158,7 @@
     "title": "Filament",
     "cat": "architecture",
     "place": "Structure against sky",
+    "alt": "A slender mast strung with a web of orange rigging against a pale sky.",
     "year": ""
   },
   {
@@ -149,6 +167,7 @@
     "title": "The Scrum",
     "cat": "sport",
     "place": "Rugby",
+    "alt": "A rugby side lined up on the grass, framed between two flags in the foreground.",
     "year": ""
   },
   {
@@ -157,6 +176,7 @@
     "title": "Still Life, Wall",
     "cat": "architecture",
     "place": "Wall of plates",
+    "alt": "A wall of patterned ceramic plates in black and white, a figure blurred past it.",
     "year": ""
   },
   {
@@ -165,6 +185,7 @@
     "title": "The Gondolier",
     "cat": "street",
     "place": "Venice",
+    "alt": "A gondolier poling down a narrow Venetian canal, in black and white.",
     "year": ""
   },
   {
@@ -173,6 +194,7 @@
     "title": "Aqueduct",
     "cat": "architecture",
     "place": "Roman arches",
+    "alt": "Roman arches in deep shadow, light caught only along their tops.",
     "year": ""
   },
   {
@@ -181,6 +203,7 @@
     "title": "Flavian",
     "cat": "architecture",
     "place": "The Colosseum, Rome",
+    "alt": "The tiered arches of the Colosseum's outer wall, Rome, in black and white.",
     "year": ""
   },
   {
@@ -189,6 +212,7 @@
     "title": "Fluting",
     "cat": "architecture",
     "place": "Fluted column",
+    "alt": "Looking up the fluted shaft of a stone column to its capital, in black and white.",
     "year": ""
   },
   {
@@ -197,6 +221,7 @@
     "title": "Colonnade",
     "cat": "architecture",
     "place": "Colonnade",
+    "alt": "Through an ornate doorway to a sunlit colonnade beyond, in black and white.",
     "year": ""
   },
   {
@@ -205,6 +230,7 @@
     "title": "The Order",
     "cat": "architecture",
     "place": "Colonnade",
+    "alt": "A row of fluted Corinthian columns seen at a steep angle from below.",
     "year": ""
   },
   {
@@ -213,6 +239,7 @@
     "title": "Quadriga",
     "cat": "architecture",
     "place": "Museum stair",
+    "alt": "Four horse statues abreast on a dark museum stair beneath a winged figure.",
     "year": ""
   },
   {
@@ -221,6 +248,7 @@
     "title": "Leviathan",
     "cat": "wildlife",
     "place": "Open water",
+    "alt": "A whale rolling just under the surface in a cloud of bubbles, in black and white.",
     "year": ""
   },
   {
@@ -229,6 +257,7 @@
     "title": "Last Light",
     "cat": "landscape",
     "place": "Sun on the horizon",
+    "alt": "A deep red sun half set on the sea horizon under bands of orange cloud.",
     "year": ""
   },
   {
@@ -237,6 +266,7 @@
     "title": "Arterial",
     "cat": "street",
     "place": "City at night, long exposure",
+    "alt": "A city street at night from above, headlight trails running past lit shopfronts.",
     "year": ""
   },
   {
@@ -245,6 +275,7 @@
     "title": "The Spire",
     "cat": "architecture",
     "place": "Burj Khalifa, Dubai",
+    "alt": "The spire of the Burj Khalifa, Dubai, crossed by a jet contrail.",
     "year": ""
   },
   {
@@ -253,6 +284,7 @@
     "title": "Three Domes",
     "cat": "architecture",
     "place": "Sheikh Zayed Grand Mosque",
+    "alt": "Three domes of the Sheikh Zayed Grand Mosque above an arcaded parapet.",
     "year": ""
   },
   {
@@ -261,6 +293,7 @@
     "title": "The Reflecting Pool",
     "cat": "architecture",
     "place": "Sheikh Zayed Grand Mosque",
+    "alt": "The arcade and minaret of the Sheikh Zayed Grand Mosque running beside a still reflecting pool.",
     "year": ""
   },
   {
@@ -269,6 +302,7 @@
     "title": "Nave",
     "cat": "architecture",
     "place": "Church interior",
+    "alt": "Colored light from stained glass falling across the stone floor of a church.",
     "year": ""
   },
   {
@@ -277,6 +311,7 @@
     "title": "Place des Vosges",
     "cat": "architecture",
     "place": "Place des Vosges, Paris",
+    "alt": "A fountain playing on the lawn of the Place des Vosges, Paris.",
     "year": ""
   },
   {
@@ -285,6 +320,7 @@
     "title": "The Fountain",
     "cat": "architecture",
     "place": "Place des Vosges, Paris",
+    "alt": "A child leaning over the basin of the Place des Vosges fountain, Paris.",
     "year": ""
   },
   {
@@ -293,6 +329,7 @@
     "title": "Sacré-Cœur",
     "cat": "architecture",
     "place": "Sacré-Cœur, Paris",
+    "alt": "Stone arches and a rose window above the pews inside Sacré-Cœur, Paris.",
     "year": ""
   },
   {
@@ -301,6 +338,7 @@
     "title": "First Snow",
     "cat": "street",
     "place": "Snow at night",
+    "alt": "Snow falling through string lights over a shop-lined street at night.",
     "year": ""
   },
   {
@@ -309,6 +347,7 @@
     "title": "Courtyard",
     "cat": "architecture",
     "place": "Courtyard, looking up",
+    "alt": "Looking straight up a narrow green courtyard to a rectangle of blue sky.",
     "year": ""
   },
   {
@@ -317,6 +356,7 @@
     "title": "Airtime",
     "cat": "sport",
     "place": "Skate session",
+    "alt": "A skater in a Santa hat mid-air, separated from the board below them.",
     "year": ""
   },
   {
@@ -325,6 +365,7 @@
     "title": "The Drop",
     "cat": "sport",
     "place": "Skate session",
+    "alt": "A skater airborne over a wooden ramp in an indoor park.",
     "year": ""
   },
   {
@@ -333,6 +374,7 @@
     "title": "Kickflip",
     "cat": "sport",
     "place": "Skate session",
+    "alt": "A skater riding the yellow lip of a bowl, arm thrown up for balance.",
     "year": ""
   },
   {
@@ -341,6 +383,7 @@
     "title": "Crossing",
     "cat": "street",
     "place": "Crossing",
+    "alt": "A lone figure crossing a bright zebra crossing on dark asphalt, shot from above.",
     "year": ""
   },
   {
@@ -349,6 +392,7 @@
     "title": "Orangutan",
     "cat": "wildlife",
     "place": "Orangutan",
+    "alt": "A close portrait of an orangutan looking to camera, red hair backlit.",
     "year": ""
   },
   {
@@ -357,6 +401,7 @@
     "title": "Santa Ollie",
     "cat": "sport",
     "place": "Skate session",
+    "alt": "A skater in a Santa hat mid-ollie over a rail, in black and white.",
     "year": ""
   },
   {
@@ -365,6 +410,7 @@
     "title": "White Volume",
     "cat": "architecture",
     "place": "Study in form",
+    "alt": "Recessed windows in a white concrete facade under raking sun and deep blue sky.",
     "year": ""
   },
   {
@@ -373,6 +419,7 @@
     "title": "Portrait",
     "cat": "portrait",
     "place": "University of Florida",
+    "alt": "A graduate in a stole kneeling on the grass under live oaks, cap set down in front, University of Florida.",
     "year": ""
   }
 ]

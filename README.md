@@ -9,10 +9,13 @@ site/                 ← deploy this folder
   css/main.css
   js/main.js          ← behaviour
   js/photos.js        ← GENERATED, do not edit
+  js/vendor/          ← gsap + lenis, vendored; see js/vendor/README.md
+  robots.txt
+  sitemap.xml
   assets/photos/      ← GENERATED WebP derivatives
   assets/video/       ← GENERATED web encodes
 tools/
-  manifest.json       ← EDIT THIS: photo titles, categories, captions
+  manifest.json       ← EDIT THIS: photo titles, categories, alt text
   build-images.py     ← photos → WebP + placeholders + static grid markup
   build-video.sh      ← showreel → hero loop, reel, posters, film stills
   serve.py            ← local dev server (supports Range; see below)
@@ -37,7 +40,21 @@ project settings, which is arguably tidier and is what `site/vercel.json` was
 written for. Both are in place, and they do not conflict: Vercel reads whichever
 `vercel.json` sits at the root of what it is deploying, so if the Root Directory
 setting is ever switched to `site`, the copy inside `site/` takes over and the
-headers stay identical. If you change the caching rules, change them in both.
+headers stay identical. If you change the caching rules -- or the security
+headers -- change them in both.
+
+Both files carry a Content-Security-Policy. It is tight on purpose: the only
+third parties it permits are Google Fonts and the YouTube embed. Two things
+will break it silently, so watch for them:
+
+* **The inline bootstrap script.** `script-src` carries a `sha256-` hash of
+  the one-line `<script>` in `<head>`. Edit that line by so much as a
+  semicolon and the browser refuses to run it, `html.js` is never set, and
+  every `[data-reveal]` element stays invisible. Recompute the hash if you
+  touch it.
+* **Anything new loaded from another domain.** An analytics snippet, a font
+  host, an embedded map: each needs its own directive adding, or it is simply
+  blocked.
 
 ---
 
@@ -45,11 +62,12 @@ headers stay identical. If you change the caching rules, change them in both.
 
 1. ~~**The email address.**~~ Set to `rafaeldiniz2@gmail.com` in the contact
    section and the JSON-LD block of `site/index.html`.
-2. **The domain.** `https://rafadiniz.com/` appears in the `canonical` link, the
-   JSON-LD block, and the `og:`/`twitter:` tags at the top of `site/index.html`.
-   The social tags need absolute URLs to work at all, so if the live domain is
-   anything else, every shared link loses its preview image until they are
-   updated. Search for `rafadiniz.com` and change all of them together.
+2. ~~**The domain.**~~ Set to `https://byrafadiniz.com/` in the `canonical`
+   link, the JSON-LD block, the `og:`/`twitter:` tags, `robots.txt` and
+   `sitemap.xml`. The social tags need absolute URLs to work at all, so if it
+   ever moves again, search for `byrafadiniz.com` and change every one of them
+   together. **The DNS has to actually resolve before launch** -- until it
+   does, shared links have no preview image.
 3. **Bigger originals, wherever they exist.** 35 of the 47 photographs come from
    files whose long edge is under 2400px, and seven are 1080px. The site is
    honest about this now — it only ever offers the widths a picture actually

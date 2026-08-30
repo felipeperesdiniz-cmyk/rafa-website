@@ -4,25 +4,25 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Rafa Diniz, Photographer and Filmmaker</title>
-<meta name="description" content="Rafa Diniz photographs architecture, wildlife, landscape and sport, and directs short documentary and brand films. Brazilian, based in Miami, and a live sports camera operator at the University of Florida." />
+<meta name="description" content="Rafa Diniz is a Brazilian filmmaker and photographer in Gainesville, Florida. Documentary and brand film, architecture, wildlife, landscape and sport." />
 <meta name="theme-color" content="#0a0a0b" />
-<link rel="canonical" href="https://rafadiniz.com/" />
+<link rel="canonical" href="https://byrafadiniz.com/" />
 
 <!-- Open Graph needs absolute URLs: a relative og:image is dropped by every
      crawler, which is how a shared link ends up with no picture on it. -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Rafa Diniz" />
-<meta property="og:url" content="https://rafadiniz.com/" />
+<meta property="og:url" content="https://byrafadiniz.com/" />
 <meta property="og:title" content="Rafa Diniz, Photographer and Filmmaker" />
 <meta property="og:description" content="Photographs and films by Rafa Diniz. Documentary, architecture, wildlife, landscape and sport." />
-<meta property="og:image" content="https://rafadiniz.com/assets/video/share-card.jpg" />
+<meta property="og:image" content="https://byrafadiniz.com/assets/video/share-card.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="A frame from Rafa Diniz's showreel." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Rafa Diniz, Photographer and Filmmaker" />
 <meta name="twitter:description" content="Photographs and films by Rafa Diniz. Documentary, architecture, wildlife, landscape and sport." />
-<meta name="twitter:image" content="https://rafadiniz.com/assets/video/share-card.jpg" />
+<meta name="twitter:image" content="https://byrafadiniz.com/assets/video/share-card.jpg" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0b'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial' font-size='16' font-weight='700' fill='%23f3f0ea' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
 
@@ -39,9 +39,9 @@
   "@type": "Person",
   "name": "Rafa Diniz",
   "jobTitle": "Photographer and Filmmaker",
-  "homeLocation": { "@type": "Place", "name": "Miami, Florida" },
+  "homeLocation": { "@type": "Place", "name": "Gainesville, Florida" },
   "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Florida" },
-  "url": "https://rafadiniz.com/",
+  "url": "https://byrafadiniz.com/",
   "email": "rafaeldiniz2@gmail.com",
   "sameAs": ["https://www.youtube.com/@Rafap.diniz-jornal"]
 }
@@ -131,12 +131,15 @@
         </a>
 
         <!-- The direct route: opens the reel with sound and controls. Also the
-             only route when motion is off, so it is never hidden. -->
-        <button class="heroReel" data-play-local="assets/video/reel.mp4"
-                data-title="Rafa Diniz Showreel">
+             only route when motion is off, so it is never hidden.
+             A real link, not a button: with JavaScript off it still plays the
+             file, and cmd-click still opens it in a tab. -->
+        <a class="heroReel" href="assets/video/reel.mp4"
+           data-play-local="assets/video/reel.mp4"
+           data-title="Rafa Diniz Showreel">
           <span class="heroReel__icon" aria-hidden="true"></span>
           <span class="heroReel__text">Play the showreel <i>0:53</i></span>
-        </button>
+        </a>
       </div>
 
       <!-- Shown only while the reel has the frame. Fades itself out when the
@@ -170,14 +173,14 @@
           <div><dt>Role</dt><dd>Directed, shot and edited</dd></div>
           <div><dt>Language</dt><dd>Portuguese</dd></div>
         </dl>
-        <!-- Rafa: replace this with your own sentence about the film. -->
         <p class="film__copy">
           A short documentary about devotion and what it asks of the body.
         </p>
-        <button class="playBtn" data-play="BNN8BEkgFSk" data-title="Paixão Calejada">
+        <a class="playBtn" href="https://www.youtube.com/watch?v=BNN8BEkgFSk"
+           data-play="BNN8BEkgFSk" data-title="Paixão Calejada">
           <span class="playBtn__icon" aria-hidden="true"></span>
           <span>Watch the film</span>
-        </button>
+        </a>
       </div>
 
       <figure class="film__figure" data-reveal>
@@ -200,10 +203,11 @@
         <p class="film__copy">
           A brand film for a working ranch, built around the people who run it.
         </p>
-        <button class="playBtn" data-play="4IPh_fbGn5g" data-title="B2B Ranch, Vídeo Institucional">
+        <a class="playBtn" href="https://www.youtube.com/watch?v=4IPh_fbGn5g"
+           data-play="4IPh_fbGn5g" data-title="B2B Ranch, Vídeo Institucional">
           <span class="playBtn__icon" aria-hidden="true"></span>
           <span>Watch the film</span>
-        </button>
+        </a>
       </div>
 
       <figure class="film__figure" data-reveal>
@@ -236,7 +240,7 @@
           <img src="assets/photos/leading-line-1200.webp"
                srcset="assets/photos/leading-line-1200.webp 1200w, assets/photos/leading-line-1680.webp 1680w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Long exposure" width="1680" height="1280"
+               alt="Traffic reduced to streaks of light on a dark highway in a long exposure." width="1680" height="1280"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -245,7 +249,7 @@
           <img src="assets/photos/morro-dois-irmaos-796.webp"
                srcset="assets/photos/morro-dois-irmaos-796.webp 796w, assets/photos/morro-dois-irmaos-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Morro Dois Irmãos, Fernando de Noronha" width="1080" height="1629"
+               alt="The rock peak above Fernando de Noronha, seen across a beach of white parasols and clear shallows." width="1080" height="1629"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -254,28 +258,28 @@
           <img src="assets/photos/the-ascent-796.webp"
                srcset="assets/photos/the-ascent-796.webp 796w, assets/photos/the-ascent-1591.webp 1591w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Fernando de Noronha" width="1790" height="2700"
+               alt="Bare feet and legs dangling over the lip of a sunlit cliff against a blue sky, Fernando de Noronha." width="1790" height="2700"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.6048">
           <img src="assets/photos/sancho-line-1080.webp"
-               alt="Fernando de Noronha" width="1080" height="673"
+               alt="Bathers on a sandbar with a small island offshore, Fernando de Noronha." width="1080" height="673"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.5">
           <img src="assets/photos/reticulated-1080.webp"
-               alt="Reticulated giraffe" width="1080" height="720"
+               alt="The necks of two reticulated giraffes crossing, their patterning filling the frame." width="1080" height="720"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.5084">
           <img src="assets/photos/louvered-dusk-1080.webp"
-               alt="Dusk, through louvres" width="1080" height="716"
+               alt="A pink and gold dusk sky read through the vertical slats of a louvre." width="1080" height="716"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -284,7 +288,7 @@
           <img src="assets/photos/nothing-but-net-795.webp"
                srcset="assets/photos/nothing-but-net-795.webp 795w, assets/photos/nothing-but-net-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Court study" width="1080" height="1630"
+               alt="An empty basketball net hanging against a pale sky, shot from below." width="1080" height="1630"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -293,7 +297,7 @@
           <img src="assets/photos/the-wheel-816.webp"
                srcset="assets/photos/the-wheel-816.webp 816w, assets/photos/the-wheel-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Observation wheel" width="1080" height="1588"
+               alt="Half an observation wheel, its cabins catching low sun against a clear sky." width="1080" height="1588"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -302,7 +306,7 @@
           <img src="assets/photos/vesper-1200.webp"
                srcset="assets/photos/vesper-1200.webp 1200w, assets/photos/vesper-1368.webp 1368w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Last light on a chapel" width="1368" height="858"
+               alt="A chapel roofline in silhouette against a pink dusk sky." width="1368" height="858"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -311,7 +315,7 @@
           <img src="assets/photos/postman-781.webp"
                srcset="assets/photos/postman-781.webp 781w, assets/photos/postman-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Postman butterfly" width="1080" height="1659"
+               alt="A red and black postman butterfly in flight beside dark rainforest leaves." width="1080" height="1659"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -320,7 +324,7 @@
           <img src="assets/photos/marsh-gold-1200.webp"
                srcset="assets/photos/marsh-gold-1200.webp 1200w, assets/photos/marsh-gold-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Wetland at sunrise" width="2700" height="2106"
+               alt="Sunrise over a wetland, mist standing on the reeds and the water holding the gold." width="2700" height="2106"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -329,7 +333,7 @@
           <img src="assets/photos/set-point-935.webp"
                srcset="assets/photos/set-point-935.webp 935w, assets/photos/set-point-1869.webp 1869w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Beach volleyball" width="2103" height="2700"
+               alt="A beach volleyball player rising to strike, another crouched ready in the sand." width="2103" height="2700"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -338,7 +342,7 @@
           <img src="assets/photos/rub-al-khali-974.webp"
                srcset="assets/photos/rub-al-khali-974.webp 974w, assets/photos/rub-al-khali-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Desert dunes" width="1080" height="1330"
+               alt="A line of footprints crossing rippled orange dune sand." width="1080" height="1330"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -347,21 +351,21 @@
           <img src="assets/photos/wind-record-924.webp"
                srcset="assets/photos/wind-record-924.webp 924w, assets/photos/wind-record-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Desert dunes" width="1080" height="1403"
+               alt="Wind ridges and scattered twigs recorded across an orange dune face." width="1080" height="1403"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.717">
           <img src="assets/photos/submerged-1080.webp"
-               alt="Hippopotamus" width="1080" height="629"
+               alt="A hippopotamus at the waterline, only its eye and ears above the surface." width="1080" height="629"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:0.9383">
           <img src="assets/photos/black-swan-1080.webp"
-               alt="Black swan" width="1080" height="1151"
+               alt="A black swan in close profile, its red bill tipped with white." width="1080" height="1151"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -370,21 +374,21 @@
           <img src="assets/photos/timber-sky-808.webp"
                srcset="assets/photos/timber-sky-808.webp 808w, assets/photos/timber-sky-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Timber and sky" width="1080" height="1603"
+               alt="Looking up a slot of blue sky between tall pale columns, a carved figure at their foot." width="1080" height="1603"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.4958">
           <img src="assets/photos/filament-1080.webp"
-               alt="Structure against sky" width="1080" height="722"
+               alt="A slender mast strung with a web of orange rigging against a pale sky." width="1080" height="722"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.6875">
           <img src="assets/photos/the-scrum-1080.webp"
-               alt="Rugby" width="1080" height="640"
+               alt="A rugby side lined up on the grass, framed between two flags in the foreground." width="1080" height="640"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -393,7 +397,7 @@
           <img src="assets/photos/still-life-wall-1200.webp"
                srcset="assets/photos/still-life-wall-1200.webp 1200w, assets/photos/still-life-wall-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Wall of plates" width="2700" height="1754"
+               alt="A wall of patterned ceramic plates in black and white, a figure blurred past it." width="2700" height="1754"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -402,7 +406,7 @@
           <img src="assets/photos/the-gondolier-1200.webp"
                srcset="assets/photos/the-gondolier-1200.webp 1200w, assets/photos/the-gondolier-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Venice" width="2700" height="1860"
+               alt="A gondolier poling down a narrow Venetian canal, in black and white." width="2700" height="1860"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -411,7 +415,7 @@
           <img src="assets/photos/aqueduct-1200.webp"
                srcset="assets/photos/aqueduct-1200.webp 1200w, assets/photos/aqueduct-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Roman arches" width="2700" height="1801"
+               alt="Roman arches in deep shadow, light caught only along their tops." width="2700" height="1801"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -420,7 +424,7 @@
           <img src="assets/photos/flavian-1200.webp"
                srcset="assets/photos/flavian-1200.webp 1200w, assets/photos/flavian-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="The Colosseum, Rome" width="2700" height="1801"
+               alt="The tiered arches of the Colosseum's outer wall, Rome, in black and white." width="2700" height="1801"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -429,7 +433,7 @@
           <img src="assets/photos/fluting-1200.webp"
                srcset="assets/photos/fluting-1200.webp 1200w, assets/photos/fluting-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Fluted column" width="2700" height="1860"
+               alt="Looking up the fluted shaft of a stone column to its capital, in black and white." width="2700" height="1860"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -438,7 +442,7 @@
           <img src="assets/photos/colonnade-788.webp"
                srcset="assets/photos/colonnade-788.webp 788w, assets/photos/colonnade-1576.webp 1576w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Colonnade" width="1773" height="2700"
+               alt="Through an ornate doorway to a sunlit colonnade beyond, in black and white." width="1773" height="2700"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -447,7 +451,7 @@
           <img src="assets/photos/the-order-788.webp"
                srcset="assets/photos/the-order-788.webp 788w, assets/photos/the-order-1576.webp 1576w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Colonnade" width="1773" height="2700"
+               alt="A row of fluted Corinthian columns seen at a steep angle from below." width="1773" height="2700"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -456,14 +460,14 @@
           <img src="assets/photos/quadriga-1200.webp"
                srcset="assets/photos/quadriga-1200.webp 1200w, assets/photos/quadriga-2400.webp 2400w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Museum stair" width="2700" height="2350"
+               alt="Four horse statues abreast on a dark museum stair beneath a winged figure." width="2700" height="2350"
                loading="lazy" decoding="async" />
         </span>
       </figure>
       <figure class="cell" data-span="4">
         <span class="cell__media" style="aspect-ratio:1.3139">
           <img src="assets/photos/leviathan-1080.webp"
-               alt="Open water" width="1080" height="822"
+               alt="A whale rolling just under the surface in a cloud of bubbles, in black and white." width="1080" height="822"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -472,7 +476,7 @@
           <img src="assets/photos/last-light-870.webp"
                srcset="assets/photos/last-light-870.webp 870w, assets/photos/last-light-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Sun on the horizon" width="1080" height="1490"
+               alt="A deep red sun half set on the sea horizon under bands of orange cloud." width="1080" height="1490"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -481,7 +485,7 @@
           <img src="assets/photos/arterial-775.webp"
                srcset="assets/photos/arterial-775.webp 775w, assets/photos/arterial-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="City at night, long exposure" width="1080" height="1672"
+               alt="A city street at night from above, headlight trails running past lit shopfronts." width="1080" height="1672"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -490,7 +494,7 @@
           <img src="assets/photos/the-spire-800.webp"
                srcset="assets/photos/the-spire-800.webp 800w, assets/photos/the-spire-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Burj Khalifa, Dubai" width="1080" height="1620"
+               alt="The spire of the Burj Khalifa, Dubai, crossed by a jet contrail." width="1080" height="1620"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -499,7 +503,7 @@
           <img src="assets/photos/three-domes-772.webp"
                srcset="assets/photos/three-domes-772.webp 772w, assets/photos/three-domes-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Sheikh Zayed Grand Mosque" width="1080" height="1679"
+               alt="Three domes of the Sheikh Zayed Grand Mosque above an arcaded parapet." width="1080" height="1679"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -508,7 +512,7 @@
           <img src="assets/photos/the-reflecting-pool-800.webp"
                srcset="assets/photos/the-reflecting-pool-800.webp 800w, assets/photos/the-reflecting-pool-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Sheikh Zayed Grand Mosque" width="1080" height="1620"
+               alt="The arcade and minaret of the Sheikh Zayed Grand Mosque running beside a still reflecting pool." width="1080" height="1620"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -517,7 +521,7 @@
           <img src="assets/photos/nave-909.webp"
                srcset="assets/photos/nave-909.webp 909w, assets/photos/nave-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Church interior" width="1080" height="1426"
+               alt="Colored light from stained glass falling across the stone floor of a church." width="1080" height="1426"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -526,7 +530,7 @@
           <img src="assets/photos/place-des-vosges-785.webp"
                srcset="assets/photos/place-des-vosges-785.webp 785w, assets/photos/place-des-vosges-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Place des Vosges, Paris" width="1080" height="1652"
+               alt="A fountain playing on the lawn of the Place des Vosges, Paris." width="1080" height="1652"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -535,7 +539,7 @@
           <img src="assets/photos/the-fountain-785.webp"
                srcset="assets/photos/the-fountain-785.webp 785w, assets/photos/the-fountain-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Place des Vosges, Paris" width="1080" height="1652"
+               alt="A child leaning over the basin of the Place des Vosges fountain, Paris." width="1080" height="1652"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -544,7 +548,7 @@
           <img src="assets/photos/sacre-coeur-766.webp"
                srcset="assets/photos/sacre-coeur-766.webp 766w, assets/photos/sacre-coeur-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Sacré-Cœur, Paris" width="1080" height="1692"
+               alt="Stone arches and a rose window above the pews inside Sacré-Cœur, Paris." width="1080" height="1692"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -553,7 +557,7 @@
           <img src="assets/photos/first-snow-949.webp"
                srcset="assets/photos/first-snow-949.webp 949w, assets/photos/first-snow-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Snow at night" width="1080" height="1365"
+               alt="Snow falling through string lights over a shop-lined street at night." width="1080" height="1365"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -562,7 +566,7 @@
           <img src="assets/photos/courtyard-805.webp"
                srcset="assets/photos/courtyard-805.webp 805w, assets/photos/courtyard-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Courtyard, looking up" width="1080" height="1610"
+               alt="Looking straight up a narrow green courtyard to a rectangle of blue sky." width="1080" height="1610"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -571,7 +575,7 @@
           <img src="assets/photos/airtime-752.webp"
                srcset="assets/photos/airtime-752.webp 752w, assets/photos/airtime-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Skate session" width="1080" height="1723"
+               alt="A skater in a Santa hat mid-air, separated from the board below them." width="1080" height="1723"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -580,7 +584,7 @@
           <img src="assets/photos/the-drop-786.webp"
                srcset="assets/photos/the-drop-786.webp 786w, assets/photos/the-drop-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Skate session" width="1080" height="1649"
+               alt="A skater airborne over a wooden ramp in an indoor park." width="1080" height="1649"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -589,7 +593,7 @@
           <img src="assets/photos/kickflip-825.webp"
                srcset="assets/photos/kickflip-825.webp 825w, assets/photos/kickflip-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Skate session" width="1080" height="1571"
+               alt="A skater riding the yellow lip of a bowl, arm thrown up for balance." width="1080" height="1571"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -598,7 +602,7 @@
           <img src="assets/photos/crossing-933.webp"
                srcset="assets/photos/crossing-933.webp 933w, assets/photos/crossing-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Crossing" width="1080" height="1389"
+               alt="A lone figure crossing a bright zebra crossing on dark asphalt, shot from above." width="1080" height="1389"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -607,7 +611,7 @@
           <img src="assets/photos/orangutan-1200.webp"
                srcset="assets/photos/orangutan-1200.webp 1200w, assets/photos/orangutan-1920.webp 1920w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Orangutan" width="1920" height="1280"
+               alt="A close portrait of an orangutan looking to camera, red hair backlit." width="1920" height="1280"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -616,7 +620,7 @@
           <img src="assets/photos/santa-ollie-796.webp"
                srcset="assets/photos/santa-ollie-796.webp 796w, assets/photos/santa-ollie-1274.webp 1274w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Skate session" width="1274" height="1920"
+               alt="A skater in a Santa hat mid-ollie over a rail, in black and white." width="1274" height="1920"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -625,7 +629,7 @@
           <img src="assets/photos/white-volume-672.webp"
                srcset="assets/photos/white-volume-672.webp 672w, assets/photos/white-volume-1080.webp 1080w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="Study in form" width="1080" height="1929"
+               alt="Recessed windows in a white concrete facade under raking sun and deep blue sky." width="1080" height="1929"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -634,7 +638,7 @@
           <img src="assets/photos/portrait-933.webp"
                srcset="assets/photos/portrait-933.webp 933w, assets/photos/portrait-1866.webp 1866w"
                sizes="(max-width: 900px) 92vw, 31vw"
-               alt="University of Florida" width="2099" height="2700"
+               alt="A graduate in a stole kneeling on the grass under live oaks, cap set down in front, University of Florida." width="2099" height="2700"
                loading="lazy" decoding="async" />
         </span>
       </figure>
@@ -668,33 +672,66 @@
 
       <div class="about__body">
         <h2 class="about__title" data-split>About</h2>
-        <p class="about__lead">
-          I'm Rafa, a Brazilian photographer and filmmaker. I live in Miami
-          and I travel for work.
+        <p class="about__lead" data-reveal>
+          Hello, I'm Rafa, a Brazilian filmmaker and photographer based in
+          Gainesville, Florida.
         </p>
-        <p>
-          Most of the paid work is documentary and brand film. In between I
-          photograph constantly: buildings, birds, landscapes, sport, and
-          whatever the street offers.
-        </p>
-        <p>
-          The two feed each other. Waiting for a bird to land is the same
-          patience a documentary asks for, and editing film taught me to
-          read a photograph as one shot out of a sequence.
-        </p>
-        <p>
-          I study at the University of Florida, where I operate broadcast and
-          handheld cameras for live Gators sport. The coverage airs on SEC
-          Network, ESPNU and the other ESPN networks. Live is a different
-          discipline: one take, no second pass, and the cut is happening while
-          you are still holding the shot.
-        </p>
+        <div class="about__block" data-reveal>
+          <p>
+            Photography was my first love, but filmmaking is where it's at for
+            me. Whether I'm behind a cinema camera, shooting stills, editing, or
+            coloring an image, I'm always chasing the same thing: stories that
+            resonate.
+          </p>
+          <p>
+            My goal is to impact someone, somewhere, sometime. It doesn't matter
+            if it's 1,000 people or just one. I want to inspire someone, just
+            like the pieces I watched that touched me. I want to create work
+            capable of doing the same.
+          </p>
+        </div>
 
-        <dl class="about__facts">
-          <div><dt>Stills</dt><dd>Architecture, wildlife, landscape, street and sport</dd></div>
-          <div><dt>Motion</dt><dd>Documentary, brand film and event</dd></div>
-          <div><dt>Live sport</dt><dd>Men's and women's basketball, football, soccer, gymnastics, softball, baseball and lacrosse</dd></div>
-        </dl>
+        <div class="about__chapters">
+          <section class="about__chapter" data-reveal>
+            <h3 class="about__kicker">Live sport</h3>
+            <p>
+              I currently work as a freelance filmmaker, photographer, and
+              editor. I also work in live sports production as a broadcast
+              camera operator, with more than 50 shows under my belt. I've
+              covered everything from packed Gator football games and conference
+              basketball to the Big 12 Lacrosse Championship. Nothing teaches
+              you to stay in the moment quite like live production.
+            </p>
+          </section>
+
+          <section class="about__chapter" data-reveal>
+            <h3 class="about__kicker">Film sets</h3>
+            <p>
+              My experience also extends to film sets, where I've worked as a
+              director, director of photography, 1st AD, key grip, gaffer, and
+              grip. Working across different roles has given me a deeper
+              understanding of all the moving parts it takes to turn an idea
+              into something on screen.
+            </p>
+          </section>
+
+          <section class="about__chapter" data-reveal>
+            <h3 class="about__kicker">Color</h3>
+            <p>
+              Color is another part of the process I've become deeply invested
+              in. I work primarily in DaVinci Resolve, using color not simply to
+              make an image beautiful, but to further communicate the language
+              of the piece.
+            </p>
+          </section>
+        </div>
+
+        <p class="about__close" data-reveal>
+          Every endeavor I take on comes back to storytelling. I want to make
+          work that resonates, that leaves an impression. Whatever the work, I
+          aim to immerse myself, body and soul, and tell the story that is
+          waiting to be told. Always.
+        </p>
       </div>
     </div>
   </section>
@@ -754,15 +791,17 @@
 </div>
 
 <!-- ───────────────────────── film player ────────────────────────── -->
-<!-- No chrome of our own. The player already carries its own controls,
+<!-- Almost no chrome of our own. The player already carries its own controls,
      fullscreen included, and a second set floating above them was two ways to
-     do the same thing. Closing is the scrim or Escape; `tabindex` lets the
-     overlay itself take focus on open now that there is no button to hold it. -->
+     do the same thing. Close is the exception: nothing in a YouTube iframe or
+     a <video> gets you out of this overlay, and on a phone there is no Escape
+     key, which left tapping the scrim as a way out that nothing announced. -->
 <div class="vp" id="vp" role="dialog" aria-modal="true" aria-label="Film player" tabindex="-1" hidden>
   <div class="vp__scrim" data-vp-close></div>
   <div class="vp__box">
     <div class="vp__frame" id="vpFrame"></div>
   </div>
+  <button class="vp__close" id="vpClose" aria-label="Close the film" data-vp-close>Close</button>
 </div>
 
 <script type="module" src="js/main.js"></script>

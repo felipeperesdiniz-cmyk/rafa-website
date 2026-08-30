@@ -103,6 +103,11 @@ for n, item in enumerate(items, 1):
         "title": item["title"],
         "cat": item["cat"],
         "place": item["place"],
+        # What the picture actually shows, written per photograph. `place` is
+        # a label ("Fernando de Noronha" sits on two different frames); alt
+        # text has to describe, and has to be unique, or a screen reader hears
+        # the same sentence twice and search engines index neither.
+        "alt": item.get("alt") or item["place"],
         "year": item["year"],
         "w": w,
         "h": h,
@@ -135,7 +140,7 @@ def escape(s):
 
 cells = []
 for r in records:
-    alt = escape(r["place"])
+    alt = escape(r["alt"])
     srcs = r["srcs"]
     srcset = ", ".join(f'assets/photos/{r["slug"]}-{v}.webp {v}w' for v in srcs)
     # One variant means there is nothing to choose between, so srcset and sizes

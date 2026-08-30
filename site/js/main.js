@@ -24,6 +24,15 @@ const CATS = [
 
 const photoSrc = (slug, w) => `assets/photos/${slug}-${w}.webp`;
 
+/* Save-Data, or a connection the browser rates as slow. Video is the only
+   thing here heavy enough to be worth asking about, and both the hero loop
+   and the showreel check it before spending someone's data for them. */
+const frugalConnection = () => {
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  return !!conn && (conn.saveData === true ||
+                    ['slow-2g', '2g', '3g'].includes(conn.effectiveType));
+};
+
 /* ── overlay background ───────────────────────────────────
    `is-locked` stops the page scrolling behind an overlay, but a screen
    reader could still walk through it. `inert` removes it from the
@@ -53,12 +62,16 @@ function setBackgroundInert(on) {
 }
 
 /* ── external libs ────────────────────────────────────────
-   Loaded from CDN. Everything below degrades to a complete,
-   readable page if these never arrive. */
-const CDN = {
-  gsap: 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js',
-  st: 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.js',
-  lenis: 'https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.mjs',
+   Vendored into js/vendor rather than pulled from a CDN: every scrap of
+   motion on this page hangs off these three files, and a portfolio should
+   not go dark because someone else's edge node is having a bad day. It also
+   means no third party is told who is reading the site. Everything below
+   still degrades to a complete, readable page if they never arrive.
+   Versions are pinned in js/vendor/README.md; update them together. */
+const LIB = {
+  gsap: './vendor/gsap/index.js',
+  st: './vendor/gsap/ScrollTrigger.js',
+  lenis: './vendor/lenis.mjs',
 };
 
 let gsap = null;
@@ -68,7 +81,7 @@ let lenis = null;
 async function loadMotion() {
   if (REDUCED) return false;
   try {
-    const [g, s] = await Promise.all([import(CDN.gsap), import(CDN.st)]);
+    const [g, s] = await Promise.all([import(LIB.gsap), import(LIB.st)]);
     gsap = g.gsap || g.default;
     ScrollTrigger = s.ScrollTrigger || s.default;
     gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +95,7 @@ async function loadMotion() {
 async function startLenis() {
   if (REDUCED || !gsap) return;
   try {
-    const mod = await import(CDN.lenis);
+    const mod = await import(LIB.lenis);
     const Lenis = mod.default || mod.Lenis;
     lenis = new Lenis({
       duration: 1.05,
@@ -156,6 +169,9 @@ function heroVideo() {
       : [['assets/video/hero-loop.webm', 'video/webm'], ['assets/video/hero-loop.mp4', 'video/mp4']];
 
   if (REDUCED) return; // poster stands in; never autoplay under reduced motion
+  // The same courtesy the showreel gets: on a metered or slow connection the
+  // poster is a complete first frame, and nobody asked for the 888 KB.
+  if (frugalConnection()) return;
 
   sources.forEach(([src, type]) => {
     const s = document.createElement('source');
@@ -254,9 +270,7 @@ function heroTakeover() {
   // instead: the titles still dissolve, the bars still close, and the
   // labelled "Play the showreel" button is still there for anyone who
   // actually wants the film.
-  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const frugal = !!conn && (conn.saveData === true ||
-                            ['slow-2g', '2g', '3g'].includes(conn.effectiveType));
+  const frugal = frugalConnection();
 
   const ARM  = 0.01;   // begin fetching the reel
   const PLAY = 0.16;   // start it playing, still invisible, so it has decoded
@@ -578,7 +592,7 @@ function cell({ photo, span, drop }, index) {
         <img
           src="${photoSrc(photo.slug, srcs[0])}"
           ${srcset}
-          alt="${photo.place}"
+          alt="${photo.alt || photo.place}"
           width="${photo.w}" height="${photo.h}"
           loading="lazy" decoding="async" />
       </span>
@@ -648,15 +662,25 @@ function lightbox() {
   let i = 0;
   let opener = null;
 
+  // The smallest variant that still covers the screen it is being shown on,
+  // rather than always the largest file on disk. A phone was being handed a
+  // 1866px frame to display across 350 points of glass.
+  const fit = (srcs) => {
+    const need = Math.min(window.innerWidth, window.innerHeight * 1.6) *
+                 Math.min(window.devicePixelRatio || 1, 2);
+    return srcs.find((w) => w >= need) || srcs.at(-1);
+  };
+
   const paint = () => {
     const p = visible[i];
     if (!p) return;
     img.style.transition = 'none';
     img.style.transform = '';
-    // The best this frame has, which is not always 2400.
-    img.src = photoSrc(p.slug, (p.srcs || [1200]).at(-1));
-    img.alt = p.place;
-    $('#lbNote').textContent = p.cat;
+    img.src = photoSrc(p.slug, fit(p.srcs || [1200]));
+    img.alt = p.alt || p.place;
+    // `cat` is a slug: 'street'. The filter row already holds the display
+    // name for each one, so read it from there rather than printing the slug.
+    $('#lbNote').textContent = (CATS.find(([slug]) => slug === p.cat) || [, p.cat])[1];
     $('#lbCount').textContent = `${i + 1} / ${visible.length}`;
   };
 
@@ -676,6 +700,7 @@ function lightbox() {
     setBackgroundInert(false);
     lenis?.start();
     img.removeAttribute('src');
+    img.alt = '';
     opener?.focus();
   };
 
@@ -786,24 +811,36 @@ function filmPlayer() {
     // Nothing should still be playing behind the overlay.
     $('#heroVideo')?.pause();
     $('#heroReelVideo')?.pause();
-    // The overlay itself takes focus, so Escape reaches the handler below and
-    // the first Tab lands in the player rather than back on the locked page.
-    vp.focus();
+    // Focus the close control: it is the way out for anyone not using a
+    // mouse, Escape still reaches the handler below, and the first Tab from
+    // there lands in the player rather than back on the locked page.
+    ($('#vpClose') || vp).focus();
   };
 
-  // The two directed films live on YouTube.
+  // A plain modified click is the visitor asking for a new tab, and the link
+  // underneath these controls is a real one. Let the browser have those.
+  const hijacked = (e) => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0);
+
+  // The two directed films live on YouTube, and the link points there, so
+  // without JavaScript "Watch the film" still watches the film.
   $$('[data-play]').forEach((btn) => {
-    btn.addEventListener('click', () => open(btn,
-      `<iframe src="https://www.youtube-nocookie.com/embed/${btn.dataset.play}?autoplay=1&rel=0&modestbranding=1"
-               title="${btn.dataset.title}"
-               allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture; web-share"
-               allowfullscreen></iframe>`));
+    btn.addEventListener('click', (e) => {
+      if (!hijacked(e)) return;
+      e.preventDefault();
+      open(btn,
+        `<iframe src="https://www.youtube-nocookie.com/embed/${btn.dataset.play}?autoplay=1&rel=0&modestbranding=1"
+                 title="${btn.dataset.title}"
+                 allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture"
+                 allowfullscreen></iframe>`);
+    });
   });
 
   // The showreel is served from here, so it plays in the same overlay rather
   // than getting a section of its own that repeats the hero.
   $$('[data-play-local]').forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      if (!hijacked(e)) return;
+      e.preventDefault();
       // The reel is 2.39:1; matching the frame to it avoids letterboxing
       // the letterbox.
       open(btn,
@@ -832,21 +869,28 @@ function staticBits() {
 
   const pick = (slug) => PHOTOS.find((p) => p.slug === slug);
 
-  const q = pick('fluting');
-  const qImg = $('#quietImg');
-  if (q && qImg) {
-    qImg.src = photoSrc(q.slug, (q.srcs || [1200]).at(-1));
-    qImg.style.backgroundImage = `url('${q.lqip}')`;
-    qImg.alt = q.place;
-  }
+  // These two frames are written into the HTML with a full description of the
+  // picture, which is worth more to a screen reader than the manifest's short
+  // label. Only fall back to `place` if the markup has nothing to say.
+  //
+  // Both get the same srcset treatment as the grid rather than a hard-coded
+  // width: the featured frame was sending every phone the 2400px file for a
+  // 375-point screen. As in the grid, a single-variant photograph gets no
+  // srcset, because there is nothing to choose between.
+  const dress = (img, photo, sizes) => {
+    if (!img || !photo) return;
+    const srcs = photo.srcs || [1200];
+    img.src = photoSrc(photo.slug, srcs[0]);
+    if (srcs.length > 1) {
+      img.srcset = srcs.map((w) => `${photoSrc(photo.slug, w)} ${w}w`).join(', ');
+      img.sizes = sizes;
+    }
+    img.style.backgroundImage = `url('${photo.lqip}')`;
+    if (!img.alt) img.alt = photo.alt || photo.place;
+  };
 
-  const a = pick('crossing');
-  const aImg = $('#aboutImg');
-  if (a && aImg) {
-    aImg.src = photoSrc(a.slug, (a.srcs || [1200])[0]);
-    aImg.style.backgroundImage = `url('${a.lqip}')`;
-    aImg.alt = a.place;
-  }
+  dress($('#quietImg'), pick('fluting'), '100vw');
+  dress($('#aboutImg'), pick('crossing'), '(max-width: 900px) 92vw, 34vw');
 }
 
 /* ── scroll focus ───────────────────────────── */
