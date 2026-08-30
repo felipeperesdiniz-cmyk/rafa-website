@@ -60,7 +60,7 @@ will break it silently, so watch for them:
 
 ## Things to change before this goes live
 
-1. ~~**The email address.**~~ Set to `rafaeldiniz2@gmail.com` in the contact
+1. ~~**The email address.**~~ Set to `rafaelperesdiniz2@gmail.com` in the contact
    section and the JSON-LD block of `site/index.html`.
 2. ~~**The domain.**~~ Set to `https://byrafadiniz.com/` in the `canonical`
    link, the JSON-LD block, the `og:`/`twitter:` tags, `robots.txt` and
@@ -78,7 +78,9 @@ will break it silently, so watch for them:
 4. **The captions.** None are shown any more — the gallery, the lightbox and
    the featured frame carry no per-photo names. The manifest `title`/`place`
    values now only feed `alt` text for screen readers and search engines.
-5. **Social links.** Only YouTube is linked, in the footer. Add Instagram etc.
+5. ~~**Social links.**~~ Instagram and YouTube are linked in the footer and
+   listed in the JSON-LD `sameAs`. Add any others in both places together --
+   `sameAs` is how a search engine ties the profiles to the person.
 
 ---
 
