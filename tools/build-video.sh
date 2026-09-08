@@ -62,11 +62,8 @@ ffmpeg -y -v error -i "$SRC" \
 # --- Posters, pulled from frames that actually have an image on them.
 ffmpeg -y -v error -ss 8  -i "$SRC" -frames:v 1 -vf "$HERO_CROP,scale=1920:-2" -q:v 3 "$OUT/hero-poster.jpg"
 
-# --- Social share card. 2.39:1 gets cropped hard by every preview, so this is
-# --- cut to the 1.91:1 the Open Graph tags declare.
-ffmpeg -y -v error -ss 8 -i "$SRC" -frames:v 1 \
-  -vf "$HERO_CROP,scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630" \
-  -q:v 3 "$OUT/share-card.jpg"
+# The social share card is no longer a bare frame: it carries the name and
+# the wordmark, and is built by tools/build-share-card.sh from hero-poster.jpg.
 ffmpeg -y -v error -ss 30 -i "$SRC" -frames:v 1 -vf "$CROP,scale=1920:-2" -q:v 3 "$OUT/reel-poster.jpg"
 
 # --- Film stills for the two directed pieces, cut from the reel sections
