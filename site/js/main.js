@@ -200,13 +200,11 @@ function heroVideo() {
 let introTl = null;
 
 function heroIntro() {
-  const title = $('.hero__title');
   if (!gsap || REDUCED) return;
 
-  const words = title ? splitWords(title) : [];
+  // The lede is the whole title card now, so it leads the intro itself.
   introTl = gsap.timeline({ defaults: { ease: 'expo.out' } })
-    .to(words, { yPercent: 0, duration: 1.15, stagger: .07 })
-    .from('.hero__lede', { y: 20, opacity: 0, duration: .9 }, '-=.75')
+    .from('.hero__lede', { y: 24, opacity: 0, duration: 1.05 })
     .from('.hero__foot > *', { y: 18, opacity: 0, duration: .8, stagger: .1 }, '-=.7');
 }
 
@@ -216,7 +214,6 @@ function choreograph() {
 
   // Headings reveal word by word as their section arrives.
   $$('[data-split]').forEach((el) => {
-    if (el.classList.contains('hero__title')) return;
     const words = splitWords(el);
     gsap.to(words, {
       yPercent: 0, duration: .9, ease: 'expo.out', stagger: .055,
@@ -293,7 +290,6 @@ function heroTakeover() {
   };
 
   gsap.set('.hero__bar', { scaleY: 0 });
-  const words = $$('.hero__title .split__inner');
 
   // Scrubbed timeline, written in the same 0–1 units as the beats above.
   const tl = gsap.timeline({
@@ -309,9 +305,7 @@ function heroTakeover() {
   //     which reads as the intro running backwards rather than a fade.
   tl.to('.hero__cue',  { opacity: 0, duration: .07 }, 0)
     .to('.heroReel',   { opacity: 0, y: 14, duration: .09 }, .02)
-    .to('.hero__lede', { opacity: 0, y: -10, duration: .10 }, .06)
-    .to(words.length ? words : '.hero__title',
-        { yPercent: -105, duration: .15, stagger: .025, ease: 'power3.in' }, .12)
+    .to('.hero__lede', { opacity: 0, y: -14, duration: .14, ease: 'power3.in' }, .06)
 
   // 2. The frame opens. Both of these must FINISH before SWAP: if the grade
   //     is still moving while the two videos cross-fade, they are different

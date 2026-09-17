@@ -110,11 +110,21 @@ body.is-locked { overflow: hidden; }
 .hdr.is-solid { background: rgba(10, 10, 11, .82); backdrop-filter: blur(12px); }
 .hdr.is-solid::before { opacity: 0; }
 .hdr.is-hidden { transform: translateY(-110%); }
-.hdr__mark { display: grid; gap: 2px; line-height: 1.1; }
-.hdr__markName { font-weight: 700; letter-spacing: -.02em; font-size: 1rem; }
+/* The signature is artwork, not type: it carries the name on its own, so the
+   mono line under it only has to say what the work is. The PNG is already
+   white on transparency, which lets it sit on the film without a plate. */
+.hdr__mark { display: grid; justify-items: start; gap: 6px; line-height: 1.1; }
+.hdr__markLogo {
+  display: block; width: auto;
+  height: clamp(38px, 4.2vw, 54px);
+  opacity: .94;
+  transition: opacity .3s var(--ease);
+}
+.hdr__mark:hover .hdr__markLogo { opacity: 1; }
 .hdr__markRole {
   font-family: var(--f-mono); font-size: 10px;
   letter-spacing: .14em; text-transform: uppercase; color: var(--paper-dim);
+  padding-left: .18em;
 }
 .hdr__nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); }
 .hdr__nav a {
@@ -217,17 +227,19 @@ html.motion .hero { height: 260svh; }
 .hero__bar--bottom { bottom: 0; transform-origin: 50% 100%; }
 
 .hero__body { position: relative; z-index: 1; align-self: center; display: grid; gap: clamp(16px, 2.4vw, 26px); max-width: 1560px; margin: 0 auto; width: 100%; }
-.hero__title {
-  font-size: clamp(3.4rem, 15.5vw, 15rem);
-  line-height: .84;
-  letter-spacing: -.05em;
-  font-weight: 800;
-  text-transform: uppercase;
-}
+/* With the name living in the header signature, the lede is the only thing
+   standing on the frame, so it carries a little more weight than body copy. */
+/* With the name living in the header signature, the lede is the only thing
+   standing on the frame, so it carries a little more weight than body copy —
+   medium rather than regular, which also holds up better over moving video
+   than the 400 the rest of the page is set in. */
 .hero__lede {
-  max-width: 46ch;
-  font-size: clamp(1.02rem, 1.7vw, 1.35rem);
-  color: rgba(243, 240, 234, .86);
+  max-width: 30ch;
+  font-size: clamp(1.35rem, 3.1vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -.02em;
+  color: rgba(243, 240, 234, .94);
 }
 .hero__lede em { font-family: var(--f-serif); font-style: italic; color: var(--paper); }
 
@@ -646,8 +658,7 @@ html.js .split__inner { display: inline-block; transform: translateY(105%); }
 
 @media (max-width: 640px) {
   /* The name carries the screen on a phone: bigger, stacked over two lines. */
-  .hero__title { font-size: clamp(3.4rem, 21vw, 7rem); line-height: .88; }
-  .hero__lede { font-size: 1rem; max-width: 34ch; }
+  .hero__lede { font-size: clamp(1.2rem, 3.4vw, 1.9rem); max-width: 26ch; }
 
   /* Stack the hero footer instead of letting three items fight over one row,
      and give the play control a proper full-width tap target. */
@@ -677,8 +688,7 @@ html.js .split__inner { display: inline-block; transform: translateY(105%); }
    swallowing a 390px-tall viewport. */
 @media (max-height: 460px) and (min-aspect-ratio: 1 / 1) {
   .hero__stage { padding-top: calc(var(--edge) * 2); }
-  .hero__title { font-size: clamp(2.4rem, 11vw, 6rem); }
-  .hero__lede { font-size: .95rem; max-width: 40ch; }
+  .hero__lede { font-size: 1.15rem; max-width: 28ch; }
   .hero__foot { padding-top: 14px; }
   .hero__cue { display: none; }
 }
