@@ -235,7 +235,7 @@ html.motion .hero { height: 260svh; }
    than the 400 the rest of the page is set in. */
 .hero__lede {
   max-width: 30ch;
-  font-size: clamp(1.35rem, 3.1vw, 2.6rem);
+  font-size: clamp(1.2rem, 2.45vw, 2.1rem);
   font-weight: 500;
   line-height: 1.22;
   letter-spacing: -.02em;
@@ -658,7 +658,7 @@ html.js .split__inner { display: inline-block; transform: translateY(105%); }
 
 @media (max-width: 640px) {
   /* The name carries the screen on a phone: bigger, stacked over two lines. */
-  .hero__lede { font-size: clamp(1.2rem, 3.4vw, 1.9rem); max-width: 26ch; }
+  .hero__lede { font-size: clamp(1.1rem, 3vw, 1.65rem); max-width: 28ch; }
 
   /* Stack the hero footer instead of letting three items fight over one row,
      and give the play control a proper full-width tap target. */
@@ -688,7 +688,7 @@ html.js .split__inner { display: inline-block; transform: translateY(105%); }
    swallowing a 390px-tall viewport. */
 @media (max-height: 460px) and (min-aspect-ratio: 1 / 1) {
   .hero__stage { padding-top: calc(var(--edge) * 2); }
-  .hero__lede { font-size: 1.15rem; max-width: 28ch; }
+  .hero__lede { font-size: 1.05rem; max-width: 30ch; }
   .hero__foot { padding-top: 14px; }
   .hero__cue { display: none; }
 }
