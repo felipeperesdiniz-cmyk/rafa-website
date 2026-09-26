@@ -558,6 +558,8 @@ html.js .cell__media img.is-loaded { opacity: 1; }
 .foot__nav a:hover, .foot__nav a:focus-visible { color: var(--paper); }
 .foot__row--fine { border-top: 1px solid var(--line-soft); padding-top: 22px; }
 .foot__row--fine p { font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-mute); }
+.foot__row--fine a { transition: color .26s var(--ease); }
+.foot__row--fine a:hover, .foot__row--fine a:focus-visible { color: var(--paper); }
 
 /* ── lightbox ────────────────────────────────────────────── */
 /* `hidden` must win over the layout display below. */
