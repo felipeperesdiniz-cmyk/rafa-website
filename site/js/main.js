@@ -202,10 +202,8 @@ let introTl = null;
 function heroIntro() {
   if (!gsap || REDUCED) return;
 
-  // The lede is the whole title card now, so it leads the intro itself.
   introTl = gsap.timeline({ defaults: { ease: 'expo.out' } })
-    .from('.hero__lede', { y: 24, opacity: 0, duration: 1.05 })
-    .from('.hero__foot > *', { y: 18, opacity: 0, duration: .8, stagger: .1 }, '-=.7');
+    .from('.hero__foot > *', { y: 18, opacity: 0, duration: .8, stagger: .1 });
 }
 
 /* ── section choreography ─────────────────────────────────── */
@@ -305,7 +303,6 @@ function heroTakeover() {
   //     which reads as the intro running backwards rather than a fade.
   tl.to('.hero__cue',  { opacity: 0, duration: .07 }, 0)
     .to('.heroReel',   { opacity: 0, y: 14, duration: .09 }, .02)
-    .to('.hero__lede', { opacity: 0, y: -14, duration: .14, ease: 'power3.in' }, .06)
 
   // 2. The frame opens. Both of these must FINISH before SWAP: if the grade
   //     is still moving while the two videos cross-fade, they are different
